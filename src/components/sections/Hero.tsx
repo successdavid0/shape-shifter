@@ -2,7 +2,7 @@ import { collection, isFill } from "@/lib/content";
 import { Button } from "@/components/ui/Button";
 import { Pill } from "@/components/ui/Pill";
 import { Fill } from "@/components/ui/Fill";
-import { HeroPoster } from "@/components/three/HeroPoster";
+import { HeroSceneLoader } from "@/components/three/HeroSceneLoader";
 import { Wordmark } from "@/components/ui/Wordmark";
 import { LoadStagger, LoadItem, Tilt } from "@/components/ui/motion";
 
@@ -62,9 +62,8 @@ export function Hero() {
           {/* Visual slot — static poster now; R3F Canvas mounts here in Phase D */}
           <LoadItem className="order-2 w-full" y={30}>
             <div className="mx-auto w-full max-w-md lg:ml-auto lg:mr-0">
-              {/* SWAP POINT: <HeroSceneLoader /> replaces <HeroPoster /> in Phase D */}
               <Tilt>
-                <HeroPoster priority />
+                <HeroSceneLoader />
               </Tilt>
             </div>
           </LoadItem>

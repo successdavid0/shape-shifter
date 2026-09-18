@@ -1,8 +1,8 @@
-import Image from "next/image";
 import { art } from "@/lib/content";
 import { SectionHeading } from "@/components/ui/SectionHeading";
 import { Pill } from "@/components/ui/Pill";
 import { Reveal } from "@/components/ui/motion";
+import { NftViewerLoader } from "@/components/three/NftViewerLoader";
 
 // The Legendary Walker Seal anchors the viewer.
 const featured = art.find((p) => p.id === "79")!;
@@ -30,21 +30,14 @@ export function Viewer() {
             <Pill tone="neutral">1 of 1</Pill>
           </div>
           <p className="font-mono text-xs uppercase tracking-widest text-ink-muted">
-            {/* SWAP POINT (Phase D): NftViewer canvas w/ damped OrbitControls */}
-            Drag to rotate — interactive 3D loads with the viewer
+            Drag to rotate — falls back to a still frame without WebGL
           </p>
         </Reveal>
 
         <div className="order-1 lg:order-2">
-          <div className="scanlines relative mx-auto aspect-square w-full max-w-lg overflow-hidden rounded-xl border border-line-strong bg-surface">
-            <div className="mesh-bg absolute inset-0" aria-hidden="true" />
-            <Image
-              src={featured.src}
-              alt={featured.alt}
-              fill
-              sizes="(max-width: 1024px) 90vw, 45vw"
-              className="object-contain p-8 drop-shadow-[0_0_50px_var(--color-accent-soft)]"
-            />
+          <div className="mx-auto w-full max-w-lg">
+            {/* SWAP POINT: pass a GLB-backed viewer here when a model exists */}
+            <NftViewerLoader src={featured.src} alt={featured.alt} />
           </div>
         </div>
       </div>
