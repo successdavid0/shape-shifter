@@ -1,7 +1,7 @@
 @import "tailwindcss";
 
 /* ============================================================
-   SKINWALKER — Retro-futurist arcade
+   SHAPESHIFTERS — Retro-futurist arcade
    Palette sampled from the collection art: midnight-indigo night
    grounds, electric cyan, blood orange, acid green.
    Tailwind v4 CSS-first tokens. No hardcoded hex in components.
@@ -41,7 +41,7 @@
   --text-xl:      clamp(1.5rem, 1.25rem + 1vw, 2rem);
   --text-2xl:     clamp(2rem, 1.5rem + 2vw, 3rem);
   --text-3xl:     clamp(2.75rem, 1.9rem + 3.4vw, 4.5rem);
-  --text-display: clamp(3rem, 2rem + 8vw, 9rem);
+  --text-display: clamp(2.75rem, 1.5rem + 7vw, 6.75rem);
 
   /* Space — 4px base, 8px rhythm */
   --spacing-section: clamp(4rem, 3rem + 6vw, 9rem);
@@ -67,6 +67,7 @@
   html {
     scroll-behavior: smooth;
     color-scheme: dark;
+    overflow-x: clip;
   }
   body {
     background-color: var(--color-surface);
@@ -74,7 +75,8 @@
     font-family: var(--font-body);
     -webkit-font-smoothing: antialiased;
     text-rendering: optimizeLegibility;
-    overflow-x: hidden;
+    overflow-x: clip;
+    max-width: 100%;
   }
   ::selection {
     background: var(--color-accent);

@@ -1,5 +1,5 @@
 /**
- * SKINWALKER — single source of truth for all copy + collection data.
+ * SHAPESHIFTERS — single source of truth for all copy + collection data.
  * PRD A4: no hardcoded strings in components.
  *
  * FILL sentinel — hard, verifiable facts the owner must supply (supply,
@@ -22,8 +22,8 @@ export interface ArtPiece {
 }
 
 export const collection = {
-  name: "SKINWALKER",
-  ticker: FILL, // e.g. "SKIN"
+  name: "SHAPESHIFTERS",
+  ticker: FILL, // e.g. "SHIFT"
   // Thematic pitch derived from the artwork (editable):
   pitch: "Shapeshifter spirits caught mid-transformation — 1/1 folk-horror totems.",
   tagline: "The tribe that wears other skins.",
@@ -180,17 +180,25 @@ export const art: ArtPiece[] = [
   },
 ];
 
-export const stats = [
+export interface Stat {
+  key: string;
+  label: string;
+  value: string;
+  mono: boolean;
+  live?: boolean;
+}
+
+export const stats: Stat[] = [
   { key: "supply", label: "Supply", value: collection.supply, mono: true },
   { key: "price", label: "Mint Price", value: collection.mintPrice, mono: true },
   { key: "chain", label: "Chain", value: collection.chain, mono: false },
   { key: "minted", label: "Minted", value: FILL, mono: true, live: true },
-] as const;
+];
 
 /** Utility — thematic categories; owner confirms specifics marked FILL. */
 export const utility = {
   intro:
-    "Holding a SKINWALKER isn't a receipt. It's a pact. Here's what carrying one gets you.",
+    "Holding a SHAPESHIFTER isn't a receipt. It's a pact. Here's what carrying one gets you.",
   items: [
     {
       title: "Full commercial rights",
@@ -206,7 +214,7 @@ export const utility = {
     },
     {
       title: "Ritual allowlist",
-      body: "Every SKINWALKER is a guaranteed spot for what comes next. The tribe grows inward first.",
+      body: "Every SHAPESHIFTER is a guaranteed spot for what comes next. The tribe grows inward first.",
     },
   ],
 } as const;
@@ -247,12 +255,12 @@ export const team = [
 
 export const faq = [
   {
-    q: "What is SKINWALKER?",
+    q: "What is SHAPESHIFTERS?",
     a: "A collection of folk-horror totem portraits — shapeshifter spirits caught mid-transformation. Each carries a rarity: Common Trickster/Tribe, Rare Skin Stalker, or the Legendary Walker Seal.",
   },
   {
     q: "What chain is it on, and what wallet do I need?",
-    a: `SKINWALKER mints on ${collection.chain === FILL ? "a chain the team will confirm before mint" : collection.chain}. You'll need a standard self-custody wallet (e.g. MetaMask or Rainbow) with funds for the mint plus a little for network gas.`,
+    a: `SHAPESHIFTERS mints on ${collection.chain === FILL ? "a chain the team will confirm before mint" : collection.chain}. You'll need a standard self-custody wallet (e.g. MetaMask or Rainbow) with funds for the mint plus a little for network gas.`,
   },
   {
     q: "How much does it cost and when is mint?",
@@ -272,7 +280,7 @@ export const faq = [
   },
   {
     q: "Are returns or floor price guaranteed?",
-    a: "No. Nothing here is financial advice and no return is promised. Collect SKINWALKER because you want the art and the tribe — never as an investment expecting profit.",
+    a: "No. Nothing here is financial advice and no return is promised. Collect SHAPESHIFTERS because you want the art and the tribe — never as an investment expecting profit.",
   },
   {
     q: "Where can I verify the contract?",
@@ -282,6 +290,6 @@ export const faq = [
 
 export const legal = {
   disclaimer:
-    "SKINWALKER is an art collectible. Nothing on this page is financial advice or a promise of value, utility, or return. Digital collectibles carry risk; only spend what you can afford to lose.",
-  rights: "Art © the SKINWALKER artist. Holders receive commercial rights to their owned token.",
+    "SHAPESHIFTERS is an art collectible. Nothing on this page is financial advice or a promise of value, utility, or return. Digital collectibles carry risk; only spend what you can afford to lose.",
+  rights: "Art © the SHAPESHIFTERS artist. Holders receive commercial rights to their owned token.",
 } as const;
