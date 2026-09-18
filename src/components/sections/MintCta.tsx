@@ -2,6 +2,7 @@ import { collection, isFill, legal } from "@/lib/content";
 import { Fill } from "@/components/ui/Fill";
 import { CopyButton } from "@/components/ui/CopyButton";
 import { MintPanel } from "@/components/web3/MintPanel";
+import { Reveal } from "@/components/ui/motion";
 
 export function MintCta() {
   const hasContract = !isFill(collection.contractAddress);
@@ -10,7 +11,7 @@ export function MintCta() {
       id="mint"
       className="mesh-bg scroll-mt-[var(--header-h)] scanlines relative overflow-hidden px-5 py-[var(--spacing-section)] sm:px-8"
     >
-      <div className="mx-auto flex max-w-3xl flex-col items-center gap-8 text-center">
+      <Reveal className="mx-auto flex max-w-3xl flex-col items-center gap-8 text-center">
         <h2 className="font-display text-3xl font-extrabold uppercase leading-[0.9] tracking-tight sm:text-display">
           <span className="chroma">Wear the skin</span>
         </h2>
@@ -40,7 +41,7 @@ export function MintCta() {
         <p className="max-w-lg text-xs leading-relaxed text-ink-muted/70">
           {legal.disclaimer}
         </p>
-      </div>
+      </Reveal>
     </section>
   );
 }

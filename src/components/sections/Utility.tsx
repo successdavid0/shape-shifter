@@ -1,5 +1,6 @@
 import { utility } from "@/lib/content";
 import { SectionHeading } from "@/components/ui/SectionHeading";
+import { Reveal } from "@/components/ui/motion";
 
 export function Utility() {
   return (
@@ -8,12 +9,12 @@ export function Utility() {
       className="scroll-mt-[var(--header-h)] px-5 py-[var(--spacing-section)] sm:px-8"
     >
       <div className="mx-auto max-w-[80rem]">
-        <div className="max-w-2xl">
+        <Reveal className="max-w-2xl">
           <SectionHeading index="03" kicker="What you get" title="The pact" />
           <p className="mt-5 text-lg text-ink-muted">{utility.intro}</p>
-        </div>
+        </Reveal>
 
-        <div className="mt-12 grid gap-3 sm:gap-4 md:grid-cols-2">
+        <Reveal delay={0.08} className="mt-12 grid gap-3 sm:gap-4 md:grid-cols-2">
           {utility.items.map((item, i) => (
             <article
               key={item.title}
@@ -32,7 +33,7 @@ export function Utility() {
               </div>
             </article>
           ))}
-        </div>
+        </Reveal>
       </div>
     </section>
   );

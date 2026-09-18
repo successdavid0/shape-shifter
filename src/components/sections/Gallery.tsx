@@ -1,5 +1,6 @@
 import { art } from "@/lib/content";
 import { SectionHeading } from "@/components/ui/SectionHeading";
+import { Reveal } from "@/components/ui/motion";
 import { ArtCard } from "./ArtCard";
 
 // Two totems break the grid at 2×2; the rest hold a square rhythm.
@@ -11,7 +12,7 @@ export function Gallery() {
   return (
     <section id="art" className="scroll-mt-[var(--header-h)] px-5 py-[var(--spacing-section)] sm:px-8">
       <div className="mx-auto max-w-[80rem]">
-        <div className="flex flex-col gap-6 sm:flex-row sm:items-end sm:justify-between">
+        <Reveal className="flex flex-col gap-6 sm:flex-row sm:items-end sm:justify-between">
           <SectionHeading
             index="01"
             kicker="The Tribe"
@@ -21,9 +22,9 @@ export function Gallery() {
             Common Tricksters, Rare Skin Stalkers, and the Legendary Walker Seal.
             Hover a totem to read its name.
           </p>
-        </div>
+        </Reveal>
 
-        <div className="mt-10 grid grid-flow-dense grid-cols-2 gap-3 sm:grid-cols-3 sm:gap-4 lg:grid-cols-4">
+        <Reveal delay={0.08} className="mt-10 grid grid-flow-dense grid-cols-2 gap-3 sm:grid-cols-3 sm:gap-4 lg:grid-cols-4">
           {art.map((piece, i) => {
             const big = FEATURED.has(piece.id);
             return (
@@ -36,7 +37,7 @@ export function Gallery() {
               />
             );
           })}
-        </div>
+        </Reveal>
       </div>
     </section>
   );

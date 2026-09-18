@@ -2,6 +2,7 @@ import Image from "next/image";
 import { art } from "@/lib/content";
 import { SectionHeading } from "@/components/ui/SectionHeading";
 import { Pill } from "@/components/ui/Pill";
+import { Reveal } from "@/components/ui/motion";
 
 // The Legendary Walker Seal anchors the viewer.
 const featured = art.find((p) => p.id === "79")!;
@@ -13,7 +14,7 @@ export function Viewer() {
       className="scroll-mt-[var(--header-h)] border-y border-line bg-surface-2/40 px-5 py-[var(--spacing-section)] sm:px-8"
     >
       <div className="mx-auto grid max-w-[80rem] items-center gap-10 lg:grid-cols-2 lg:gap-16">
-        <div className="order-2 flex flex-col items-start gap-6 lg:order-1">
+        <Reveal className="order-2 flex flex-col items-start gap-6 lg:order-1">
           <SectionHeading
             index="02"
             kicker="Up close"
@@ -32,7 +33,7 @@ export function Viewer() {
             {/* SWAP POINT (Phase D): NftViewer canvas w/ damped OrbitControls */}
             Drag to rotate — interactive 3D loads with the viewer
           </p>
-        </div>
+        </Reveal>
 
         <div className="order-1 lg:order-2">
           <div className="scanlines relative mx-auto aspect-square w-full max-w-lg overflow-hidden rounded-xl border border-line-strong bg-surface">

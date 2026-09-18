@@ -47,6 +47,13 @@ export default function RootLayout({
       lang="en"
       className={`${display.variable} ${body.variable} ${mono.variable} h-full`}
     >
+      <head>
+        {/* Without JS, motion's initial hidden state would stay applied —
+            force reveal wrappers visible so content is fully usable. */}
+        <noscript>
+          <style>{`.js-reveal{opacity:1 !important;transform:none !important}`}</style>
+        </noscript>
+      </head>
       <body className="grain min-h-full">
         <a
           href="#main"

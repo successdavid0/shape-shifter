@@ -3,6 +3,7 @@
 import { useState, useId } from "react";
 import { faq } from "@/lib/content";
 import { SectionHeading } from "@/components/ui/SectionHeading";
+import { Reveal } from "@/components/ui/motion";
 
 function Item({ q, a, index }: { q: string; a: string; index: number }) {
   const [open, setOpen] = useState(index === 0);
@@ -54,11 +55,11 @@ export function Faq() {
     >
       <div className="mx-auto grid max-w-[80rem] gap-10 lg:grid-cols-[0.8fr_1.2fr]">
         <SectionHeading index="06" kicker="Questions" title="Read before you mint" />
-        <div>
+        <Reveal>
           {faq.map((f, i) => (
             <Item key={i} q={f.q} a={f.a} index={i} />
           ))}
-        </div>
+        </Reveal>
       </div>
     </section>
   );

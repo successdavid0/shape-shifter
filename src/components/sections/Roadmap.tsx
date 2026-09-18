@@ -1,6 +1,7 @@
 import { roadmap } from "@/lib/content";
 import { SectionHeading } from "@/components/ui/SectionHeading";
 import { Pill } from "@/components/ui/Pill";
+import { Reveal } from "@/components/ui/motion";
 
 export function Roadmap() {
   return (
@@ -15,7 +16,8 @@ export function Roadmap() {
           title="Honest phases, no dates we can't hit"
         />
 
-        <ol className="mt-12 border-l border-line-strong">
+        <Reveal className="mt-12">
+        <ol className="border-l border-line-strong">
           {roadmap.map((r) => (
             <li key={r.phase} className="relative pl-8 pb-10 last:pb-0 sm:pl-12">
               <span
@@ -39,6 +41,7 @@ export function Roadmap() {
             </li>
           ))}
         </ol>
+        </Reveal>
       </div>
     </section>
   );

@@ -1,6 +1,7 @@
 import { team, isFill } from "@/lib/content";
 import { SectionHeading } from "@/components/ui/SectionHeading";
 import { Fill } from "@/components/ui/Fill";
+import { Reveal } from "@/components/ui/motion";
 
 export function Team() {
   return (
@@ -9,12 +10,12 @@ export function Team() {
       className="scroll-mt-[var(--header-h)] px-5 py-[var(--spacing-section)] sm:px-8"
     >
       <div className="mx-auto max-w-[80rem]">
-        <div className="max-w-2xl">
+        <Reveal className="max-w-2xl">
           <SectionHeading index="05" kicker="Behind the masks" title="The keepers" />
           <p className="mt-5 text-ink-muted">
             Pseudonymous, on-chain, reachable. Real people carry this tribe.
           </p>
-        </div>
+        </Reveal>
 
         <ul className="mt-10 grid gap-3 sm:gap-4 sm:grid-cols-2 lg:grid-cols-3">
           {team.map((m, i) => (
