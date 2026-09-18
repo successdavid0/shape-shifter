@@ -4,6 +4,7 @@ import { display, body, mono } from "@/lib/fonts";
 import { collection } from "@/lib/content";
 import { Header } from "@/components/layout/Header";
 import { Footer } from "@/components/layout/Footer";
+import { MintProvider } from "@/components/web3/MintProvider";
 
 const title = `${collection.name} — ${collection.tagline}`;
 const description = collection.pitch;
@@ -61,9 +62,11 @@ export default function RootLayout({
         >
           Skip to content
         </a>
-        <Header />
-        <main id="main">{children}</main>
-        <Footer />
+        <MintProvider>
+          <Header />
+          <main id="main">{children}</main>
+          <Footer />
+        </MintProvider>
       </body>
     </html>
   );
