@@ -91,6 +91,11 @@ export function Footer() {
                   </a>
                 </li>
                 <li>
+                  <a href="#whitelist" className="text-ink transition-colors hover:text-accent">
+                    Whitelist
+                  </a>
+                </li>
+                <li>
                   <a href="#utility" className="text-ink transition-colors hover:text-accent">
                     Utility
                   </a>

@@ -16,7 +16,11 @@ export function MintCta() {
           <span className="chroma">Wear the skin</span>
         </h2>
         <p className="max-w-md text-lg text-ink-muted">
-          The tribe is waiting. Connect, verify the contract, and mint your Walker.
+          The Skinwalker Edition walks October 25, 2026. Connect, verify the contract, and mint your Walker when the countdown hits zero —{" "}
+          <a href="#whitelist" className="text-accent underline-offset-4 hover:underline">
+            reserve your allowlist spot
+          </a>{" "}
+          before then.
         </p>
 
         {/* Mint interface — mocked state until the contract is wired (Phase E) */}

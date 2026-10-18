@@ -23,15 +23,19 @@ export interface ArtPiece {
 
 export const collection = {
   name: "SHAPESHIFTERS",
+  edition: "Skinwalker Edition", // the drop now live on this page
   ticker: FILL, // e.g. "SHIFT"
   // Thematic pitch derived from the artwork (editable):
-  pitch: "Shapeshifter spirits caught mid-transformation — 1/1 folk-horror totems.",
+  pitch:
+    "Shapeshifter spirits caught mid-transformation. The Skinwalker Edition — 1/1 folk-horror totems that wear other skins.",
   tagline: "The tribe that wears other skins.",
   supply: FILL, // e.g. "6,666"
   chain: FILL, // Ethereum | Base | Solana | Abstract | other
   mintPrice: FILL, // public
   mintPriceAllowlist: FILL, // allowlist, if different
-  mintDateUtc: FILL, // ISO-8601 UTC, e.g. 2026-10-31T18:00:00Z
+  // Official Skinwalker Edition release — Oct 25, 2026. Time (17:00 UTC) is a
+  // placeholder default; adjust the hour here if the team sets a different one.
+  mintDateUtc: "2026-10-25T17:00:00Z", // ISO-8601 UTC
   contractAddress: FILL, // or "TBA"
   marketplaceUrl: FILL,
   socials: {
@@ -44,9 +48,30 @@ export const collection = {
 
 export const nav = [
   { label: "The Art", href: "#art" },
+  { label: "Whitelist", href: "#whitelist" },
   { label: "Utility", href: "#utility" },
   { label: "FAQ", href: "#faq" },
 ] as const;
+
+/**
+ * Whitelist reservation — pre-launch allowlist capture for the Skinwalker
+ * Edition. Copy only; the wallet-submission UX lives in WhitelistForm.
+ */
+export const whitelist = {
+  kicker: "Skinwalker Edition · Allowlist",
+  heading: "Reserve your spot",
+  intro:
+    "Drop your wallet to lock a guaranteed allowlist spot before the public walk — no cost, no wallet connection, just your place in the tribe when the Skinwalker Edition mints.",
+  placeholder: "0x… or yourname.eth",
+  cta: "Reserve spot",
+  loading: "Reserving…",
+  success: "You're on the list. We'll call your wallet when the Skinwalker Edition walks.",
+  duplicate: "This wallet is already on the list — your spot is locked.",
+  invalid: "Enter a valid wallet address (0x… , 42 chars) or an ENS name ending in .eth.",
+  error: "Couldn't reserve your spot just now. Please try again in a moment.",
+  again: "Reserve another wallet",
+  note: "No tokens move and nothing is charged. Reserving only records your wallet for the allowlist snapshot — verify you're on the official domain first.",
+} as const;
 
 /** All 16 provided pieces, catalogued from the art itself. */
 export const art: ArtPiece[] = [
@@ -223,7 +248,7 @@ export const roadmap = [
   {
     phase: "I",
     title: "The Summoning",
-    body: "Mint. The full collection walks. Holder verification and the Den open the same day.",
+    body: "The Skinwalker Edition mints October 25, 2026 — the full collection walks. Allowlist wallets go first; holder verification and the Den open the same day.",
     status: "next" as const,
   },
   {
@@ -263,8 +288,12 @@ export const faq = [
     a: `SHAPESHIFTERS mints on ${collection.chain === FILL ? "a chain the team will confirm before mint" : collection.chain}. You'll need a standard self-custody wallet (e.g. MetaMask or Rainbow) with funds for the mint plus a little for network gas.`,
   },
   {
-    q: "How much does it cost and when is mint?",
-    a: `Mint price and the exact date go live on this page and our channels before mint. They are shown in the stats bar the moment they're set — nothing here is a promise of value.`,
+    q: "When does the Skinwalker Edition mint?",
+    a: `The Skinwalker Edition mints on October 25, 2026. The live countdown on this page is the source of truth; the exact mint price goes live in the stats bar before mint. Nothing here is a promise of value.`,
+  },
+  {
+    q: "How do I reserve a whitelist spot?",
+    a: `Drop your wallet address in the Reserve-your-spot section to record it for the allowlist snapshot. It costs nothing, moves no tokens, and doesn't need a wallet connection — it simply puts your wallet in line ahead of the public walk.`,
   },
   {
     q: "What is gas?",

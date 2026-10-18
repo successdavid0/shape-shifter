@@ -25,7 +25,17 @@ export const metadata: Metadata = {
   },
   description,
   applicationName: collection.name,
-  keywords: ["NFT", "collection", "mint", collection.name, "digital art", "PFP"],
+  keywords: [
+    "NFT",
+    "collection",
+    "mint",
+    "whitelist",
+    "allowlist",
+    collection.name,
+    collection.edition,
+    "digital art",
+    "PFP",
+  ],
   alternates: { canonical: "/" },
   openGraph: {
     type: "website",

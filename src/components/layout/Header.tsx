@@ -3,7 +3,7 @@
 import { useEffect, useState } from "react";
 import Link from "next/link";
 import { nav, collection } from "@/lib/content";
-import { ConnectButton } from "@/components/web3/ConnectButton";
+import { Button } from "@/components/ui/Button";
 
 export function Header() {
   const [open, setOpen] = useState(false);
@@ -59,7 +59,7 @@ export function Header() {
         </nav>
 
         <div className="hidden md:block">
-          <ConnectButton />
+          <Button href="#whitelist" size="sm">Reserve spot</Button>
         </div>
 
         <button
@@ -110,8 +110,8 @@ export function Header() {
               {n.label}
             </a>
           ))}
-          <div className="mt-6 w-full max-w-xs">
-            <ConnectButton />
+          <div className="mt-6 w-full max-w-xs" onClick={() => setOpen(false)}>
+            <Button href="#whitelist" size="lg" className="w-full">Reserve spot</Button>
           </div>
         </div>
       </div>

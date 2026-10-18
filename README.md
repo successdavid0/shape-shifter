@@ -1,8 +1,9 @@
 # SHAPESHIFTERS — NFT Collection Landing Page
 
 A single-page marketing site for the **SHAPESHIFTERS** 1/1 folk-horror totem
-collection. Built to the project PRD: Next.js (App Router) · TypeScript ·
-Tailwind v4 · React Three Fiber · Motion.
+collection. The **Skinwalker Edition** mints **October 25, 2026**; the site
+captures allowlist reservations ahead of the public walk. Built to the project
+PRD: Next.js (App Router) · TypeScript · Tailwind v4 · React Three Fiber · Motion.
 
 Aesthetic direction: **Retro-futurist arcade** — midnight-indigo ground,
 electric-cyan / blood-orange / acid-green accents sampled from the artwork,
@@ -35,6 +36,7 @@ never commit real keys or a WalletConnect project id.**
 | `NEXT_PUBLIC_WALLETCONNECT_PROJECT_ID` | WalletConnect id (wallet UI) |
 | `NEXT_PUBLIC_CONTRACT_ADDRESS` | Mint contract address once deployed |
 | `NEXT_PUBLIC_EXPLORER_BASE` | Block-explorer base URL for links |
+| `NEXT_PUBLIC_WHITELIST_ENDPOINT` | Optional POST target for whitelist reservations (defaults to localStorage) |
 
 ## Filling in the collection
 
@@ -42,8 +44,12 @@ All copy and collection data live in **`src/lib/content.ts`**. Values still
 set to the `FILL` sentinel (`<<FILL>>`) render on the page as a visible **TBA**
 marker — nothing is invented. Fill these before launch:
 
-`ticker · supply · chain · mintPrice · mintDateUtc · contractAddress ·
-marketplaceUrl · socials.{x,discord,telegram} · explorerBase · team[]`
+`ticker · supply · chain · mintPrice · contractAddress · marketplaceUrl ·
+socials.{x,discord,telegram} · explorerBase · team[]`
+
+`mintDateUtc` is set to the Skinwalker Edition release, `2026-10-25T17:00:00Z`.
+The time-of-day (17:00 UTC) is a placeholder default — change the hour in
+`collection.mintDateUtc` if the team confirms a different mint time.
 
 The 16 collection images live in `public/art/` (filenames retain their original
 `SKINWALKER*` ids; the brand name is SHAPESHIFTERS). Rarity tiers are read from
@@ -67,6 +73,10 @@ The UI is complete; only data sources change. Search the code for `SWAP POINT`:
    markup (`ConnectButton`, `MintPanel`, `MintView`) does not change — it already
    renders every state in PRD §8.
 4. **Contract config / ABI** — `lib/contract.ts`.
+5. **Whitelist reservations** — `components/web3/WhitelistForm.tsx`: wallet
+   addresses are recorded in `localStorage` by default. Set
+   `NEXT_PUBLIC_WHITELIST_ENDPOINT` to POST them to an allowlist backend / form
+   service instead. The UI states don't change.
 
 ## 3D validation (PRD §7.6)
 

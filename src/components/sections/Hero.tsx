@@ -1,4 +1,5 @@
 import { collection, isFill } from "@/lib/content";
+import { formatMintDateShort } from "@/lib/datetime";
 import { Button } from "@/components/ui/Button";
 import { Pill } from "@/components/ui/Pill";
 import { Fill } from "@/components/ui/Fill";
@@ -16,7 +17,9 @@ export function Hero() {
       <LoadStagger className="mx-auto max-w-[80rem]">
         <LoadItem>
           <Pill tone={dateKnown ? "live" : "soon"} pulse className="mb-6">
-            {dateKnown ? "Mint scheduled" : "Mint date incoming"}
+            {dateKnown
+              ? `${collection.edition} · Mints ${formatMintDateShort(collection.mintDateUtc)}`
+              : `${collection.edition} · Mint date incoming`}
           </Pill>
         </LoadItem>
 
@@ -48,12 +51,18 @@ export function Hero() {
                   <dt className="text-xs uppercase tracking-widest text-ink-muted">Price</dt>
                   <dd className="tnum text-ink"><Fill value={collection.mintPrice} /></dd>
                 </div>
+                {dateKnown && (
+                  <div className="flex flex-col">
+                    <dt className="text-xs uppercase tracking-widest text-ink-muted">Mint</dt>
+                    <dd className="text-ink">{formatMintDateShort(collection.mintDateUtc)}</dd>
+                  </div>
+                )}
               </dl>
             </LoadItem>
 
             <LoadItem>
               <div className="flex flex-col gap-3 pt-2 sm:flex-row">
-                <Button href="#mint" size="lg">Mint a Shapeshifter</Button>
+                <Button href="#whitelist" size="lg">Reserve your spot</Button>
                 <Button href="#art" size="lg" variant="outline">See the tribe</Button>
               </div>
             </LoadItem>
