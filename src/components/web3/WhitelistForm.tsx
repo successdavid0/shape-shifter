@@ -14,9 +14,11 @@ import { shortenAddress } from "@/lib/contract";
  * list" state is real on return visits — nothing is charged and no wallet is
  * connected, matching the honest-placeholder ethos of the rest of the site.
  *
- * SWAP POINT: to persist reservations for real, POST the address to your
- * allowlist backend / form service. Set NEXT_PUBLIC_WHITELIST_ENDPOINT and the
- * submit() below will fire-and-forward there; the UI states don't change.
+ * Reservations POST to NEXT_PUBLIC_WHITELIST_ENDPOINT, which defaults to the
+ * built-in /api/whitelist route (Supabase-backed — see src/lib/supabase.ts and
+ * supabase/schema.sql). When Supabase isn't configured the route answers 503
+ * and we fall back to localStorage-only, so the UI behaves the same with or
+ * without a backend. Point the env var elsewhere to use a different service.
  */
 
 const STORE_KEY = "skinwalker:whitelist";
@@ -42,7 +44,7 @@ function readStore(): string[] {
   }
 }
 
-const ENDPOINT = process.env.NEXT_PUBLIC_WHITELIST_ENDPOINT;
+const ENDPOINT = process.env.NEXT_PUBLIC_WHITELIST_ENDPOINT || "/api/whitelist";
 
 export function WhitelistForm() {
   const [value, setValue] = useState("");
@@ -73,17 +75,29 @@ export function WhitelistForm() {
 
     setStatus("submitting");
     try {
-      if (ENDPOINT) {
-        const res = await fetch(ENDPOINT, {
-          method: "POST",
-          headers: { "Content-Type": "application/json" },
-          body: JSON.stringify({ address: entry }),
-        });
-        if (!res.ok) throw new Error(`HTTP ${res.status}`);
+      const res = await fetch(ENDPOINT, {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ address: entry }),
+      });
+
+      // 503 = backend not configured yet → fall back to localStorage-only.
+      // Any other non-2xx is a real failure.
+      if (!res.ok && res.status !== 503) {
+        if (res.status === 400) {
+          setStatus("invalid");
+          return;
+        }
+        throw new Error(`HTTP ${res.status}`);
       }
+
+      const data: { duplicate?: boolean } = res.ok
+        ? await res.json().catch(() => ({}))
+        : {};
+
       localStorage.setItem(STORE_KEY, JSON.stringify([...existing, entry]));
       setSaved(entry);
-      setStatus("success");
+      setStatus(data.duplicate ? "duplicate" : "success");
     } catch {
       setStatus("error");
     }
