@@ -1,7 +1,8 @@
 /**
- * Full-width wordmark. Uses SVG textLength to stretch the word to exactly the
- * container width — always one clean line at every breakpoint — with layered
- * offsets for the retro duotone chroma. Height scales with the viewBox.
+ * Full-width glitch wordmark. SVG textLength stretches the word to exactly the
+ * container width — always one clean line — with red/cyan channel-split layers
+ * behind a bone-white face. The split layers drift on a loop for the VHS tear.
+ * Monochrome: colour appears only as the chromatic fringe.
  */
 export function Wordmark({
   text,
@@ -32,14 +33,32 @@ export function Wordmark({
       aria-label={text}
       preserveAspectRatio="xMidYMid meet"
     >
-      {/* duotone shadows */}
-      <text {...common} fill="var(--color-accent-warm)" opacity="0.85" transform="translate(4,0)">
-        {text}
-      </text>
-      <text {...common} fill="var(--color-accent)" opacity="0.85" transform="translate(-4,0)">
-        {text}
-      </text>
-      {/* main face */}
+      {/* chromatic channel split — drifts for the tear */}
+      <g style={{ mixBlendMode: "screen" }}>
+        <text {...common} fill="var(--glitch-cyan)" opacity="0.9">
+          {text}
+          <animate
+            attributeName="transform"
+            attributeType="XML"
+            type="translate"
+            values="-5 0; 0 0; -3 2; 0 0; -6 -1; 0 0"
+            dur="3.2s"
+            repeatCount="indefinite"
+          />
+        </text>
+        <text {...common} fill="var(--glitch-red)" opacity="0.9">
+          {text}
+          <animate
+            attributeName="transform"
+            attributeType="XML"
+            type="translate"
+            values="5 0; 0 0; 4 -2; 0 0; 6 1; 0 0"
+            dur="2.7s"
+            repeatCount="indefinite"
+          />
+        </text>
+      </g>
+      {/* bone-white main face */}
       <text {...common} fill="var(--color-ink)">
         {text}
       </text>

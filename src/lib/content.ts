@@ -47,10 +47,10 @@ export const collection = {
 } as const;
 
 export const nav = [
-  { label: "The Art", href: "#art" },
-  { label: "Whitelist", href: "#whitelist" },
-  { label: "Utility", href: "#utility" },
-  { label: "FAQ", href: "#faq" },
+  { label: "The Tribe", href: "/tribe" },
+  { label: "Whitelist", href: "/whitelist" },
+  { label: "Lore", href: "/lore" },
+  { label: "FAQ", href: "/faq" },
 ] as const;
 
 /**

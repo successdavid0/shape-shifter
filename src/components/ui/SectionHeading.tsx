@@ -12,8 +12,8 @@ export function SectionHeading({
   return (
     <div className={`flex flex-col gap-3 ${className}`}>
       {(index || kicker) && (
-        <div className="flex items-center gap-3 font-mono text-xs uppercase tracking-widest text-accent">
-          {index && <span className="text-ink-muted">{index}</span>}
+        <div className="flex items-center gap-3 font-mono text-xs uppercase tracking-[0.25em] text-ink-muted">
+          {index && <span className="text-ink">{index}</span>}
           {index && kicker && <span className="h-px w-8 bg-line-strong" />}
           {kicker && <span>{kicker}</span>}
         </div>

@@ -21,17 +21,17 @@ function TotemCard({ src, spin }: { src: string; spin: boolean }) {
   return (
     <group ref={group}>
       <RoundedBox args={[2.4, 2.4, 0.16]} radius={0.06} smoothness={4}>
-        <meshStandardMaterial color="#100826" roughness={0.6} metalness={0.2} />
+        <meshStandardMaterial color="#0a0a0c" roughness={0.7} metalness={0.3} />
       </RoundedBox>
       {/* front face art */}
       <mesh position={[0, 0, 0.081]}>
         <planeGeometry args={[2.24, 2.24]} />
         <meshStandardMaterial map={tex} roughness={0.5} metalness={0.1} />
       </mesh>
-      {/* back sigil glow */}
+      {/* back glitch glow — faint chromatic fringe */}
       <mesh position={[0, 0, -0.081]} rotation={[0, Math.PI, 0]}>
         <planeGeometry args={[2.24, 2.24]} />
-        <meshStandardMaterial color="#23e5ff" emissive="#ff36c4" emissiveIntensity={0.25} roughness={0.4} />
+        <meshStandardMaterial color="#141418" emissive="#00e5ff" emissiveIntensity={0.18} roughness={0.5} />
       </mesh>
     </group>
   );
@@ -70,7 +70,7 @@ export default function NftViewer({ src }: { src: string }) {
       >
         <ambientLight intensity={0.8} />
         <directionalLight position={[2, 3, 4]} intensity={1.4} />
-        <pointLight position={[-3, -2, 2]} intensity={25} color="#23e5ff" />
+        <pointLight position={[-3, -2, 2]} intensity={18} color="#f4f4f6" />
         <Suspense fallback={<CanvasLoader />}>
           <TotemCard src={src} spin={spin} />
         </Suspense>

@@ -1,3 +1,4 @@
+import Link from "next/link";
 import { collection, legal, isFill } from "@/lib/content";
 import { Fill } from "@/components/ui/Fill";
 
@@ -41,7 +42,7 @@ export function Footer() {
                         href={s.href}
                         target="_blank"
                         rel="noopener noreferrer"
-                        className="text-sm text-ink transition-colors hover:text-accent"
+                        className="text-sm text-ink transition-colors hover:text-ink-muted"
                       >
                         {s.label}
                       </a>
@@ -71,7 +72,7 @@ export function Footer() {
                       href={collection.marketplaceUrl}
                       target="_blank"
                       rel="noopener noreferrer"
-                      className="text-ink transition-colors hover:text-accent"
+                      className="text-ink transition-colors hover:text-ink-muted"
                     >
                       Marketplace
                     </a>
@@ -86,24 +87,24 @@ export function Footer() {
               </h3>
               <ul className="mt-4 space-y-2 text-sm">
                 <li>
-                  <a href="#art" className="text-ink transition-colors hover:text-accent">
-                    The Art
-                  </a>
+                  <Link href="/tribe" className="text-ink transition-colors hover:text-ink-muted">
+                    The Tribe
+                  </Link>
                 </li>
                 <li>
-                  <a href="#whitelist" className="text-ink transition-colors hover:text-accent">
+                  <Link href="/whitelist" className="text-ink transition-colors hover:text-ink-muted">
                     Whitelist
-                  </a>
+                  </Link>
                 </li>
                 <li>
-                  <a href="#utility" className="text-ink transition-colors hover:text-accent">
-                    Utility
-                  </a>
+                  <Link href="/lore" className="text-ink transition-colors hover:text-ink-muted">
+                    Lore
+                  </Link>
                 </li>
                 <li>
-                  <a href="#faq" className="text-ink transition-colors hover:text-accent">
+                  <Link href="/faq" className="text-ink transition-colors hover:text-ink-muted">
                     FAQ
-                  </a>
+                  </Link>
                 </li>
               </ul>
             </div>

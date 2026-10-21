@@ -1,3 +1,4 @@
+import Link from "next/link";
 import { collection, isFill, legal } from "@/lib/content";
 import { Fill } from "@/components/ui/Fill";
 import { CopyButton } from "@/components/ui/CopyButton";
@@ -17,9 +18,9 @@ export function MintCta() {
         </h2>
         <p className="max-w-md text-lg text-ink-muted">
           The Skinwalker Edition walks October 25, 2026. Connect, verify the contract, and mint your Walker when the countdown hits zero —{" "}
-          <a href="#whitelist" className="text-accent underline-offset-4 hover:underline">
+          <Link href="/whitelist" className="text-ink underline underline-offset-4 decoration-ink-muted hover:decoration-ink">
             reserve your allowlist spot
-          </a>{" "}
+          </Link>{" "}
           before then.
         </p>
 

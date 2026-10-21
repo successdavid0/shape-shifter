@@ -1,32 +1,38 @@
 @import "tailwindcss";
 
 /* ============================================================
-   SHAPESHIFTERS — Retro-futurist arcade
-   Palette sampled from the collection art: midnight-indigo night
-   grounds, electric cyan, blood orange, acid green.
+   SHAPESHIFTER — Glitch Edition
+   Pure monochrome: black grounds, bone-white ink, VHS grey.
+   Colour appears ONLY as chromatic-aberration fringing on the
+   glitch (red / cyan channel split) — the signal of distortion.
    Tailwind v4 CSS-first tokens. No hardcoded hex in components.
    ============================================================ */
 
 @theme {
-  /* Colour — dominant midnight ground + sharp saturated accents */
-  --color-surface:      #06030f; /* base night ground */
-  --color-surface-2:    #100826; /* raised panels */
-  --color-surface-3:    #1a1140; /* cards / inputs */
-  --color-ink:          #f6f1ff; /* primary text */
-  --color-ink-muted:    #aba1c6; /* secondary text, ≥4.5:1 on surface */
+  /* Monochrome ground → ink */
+  --color-surface:      #000000; /* pure black base */
+  --color-surface-2:    #0a0a0c; /* raised panels */
+  --color-surface-3:    #141418; /* cards / inputs */
+  --color-ink:          #f4f4f6; /* bone white */
+  --color-ink-muted:    #8c8c94; /* VHS grey, ≥4.5:1 on black */
 
-  --color-accent:       #23e5ff; /* the loud one — electric cyan */
+  /* The "accent" is simply white — the lit signal. Buttons invert. */
+  --color-accent:       #fafafa;
   --color-accent-soft:  color-mix(in oklab, var(--color-accent) 20%, transparent);
-  --color-accent-warm:  #ff5a1f; /* blood orange */
-  --color-accent-acid:  #8bff3c; /* acid green */
-  --color-accent-magenta: #ff36c4; /* duotone shadow partner */
+  --color-accent-warm:  #e4e4e8; /* kept as a near-white alias */
+  --color-accent-acid:  #ffffff;
+  --color-accent-magenta: #ff2a6d; /* chroma shadow partner (glitch only) */
+
+  /* Glitch channel split — used only inside distortion utilities */
+  --glitch-red:   #ff003c;
+  --glitch-cyan:  #00e5ff;
 
   --color-line:         color-mix(in oklab, var(--color-ink) 14%, transparent);
-  --color-line-strong:  color-mix(in oklab, var(--color-ink) 26%, transparent);
+  --color-line-strong:  color-mix(in oklab, var(--color-ink) 30%, transparent);
 
-  --color-success:      #8bff3c;
-  --color-warn:         #ffc53d;
-  --color-danger:       #ff4d6d;
+  --color-success:      #eaeaea; /* "live" reads as lit white */
+  --color-warn:         #9a9aa2;
+  --color-danger:       #ff4d57; /* functional error red only */
 
   /* Type — self-hosted, variables provided by next/font in layout.tsx */
   --font-display: var(--ff-display), "Syne", ui-sans-serif, sans-serif;
@@ -51,12 +57,13 @@
   --ease-spring:   cubic-bezier(0.34, 1.56, 0.64, 1);
   --dur-fast: 150ms; --dur-base: 300ms; --dur-slow: 600ms; --dur-reveal: 900ms;
 
-  /* Depth */
-  --radius-sm: 4px;
-  --radius-lg: 18px;
-  --radius-xl: 28px;
-  --shadow-lift: 0 18px 50px -20px color-mix(in oklab, var(--color-surface) 90%, black);
-  --shadow-glow: 0 0 40px var(--color-accent-soft);
+  /* Depth — brutalist: hard edges, no soft radii by default */
+  --radius-sm: 2px;
+  --radius-lg: 4px;
+  --radius-xl: 6px;
+  --shadow-lift: 0 18px 50px -20px #000;
+  --shadow-glow: 0 0 0 1px color-mix(in oklab, var(--color-ink) 40%, transparent),
+                 0 0 32px -8px color-mix(in oklab, var(--color-ink) 30%, transparent);
 
   /* Layout */
   --header-h: 4.5rem;
@@ -68,6 +75,7 @@
     scroll-behavior: smooth;
     color-scheme: dark;
     overflow-x: clip;
+    scroll-padding-top: var(--header-h);
   }
   body {
     background-color: var(--color-surface);
@@ -79,12 +87,11 @@
     max-width: 100%;
   }
   ::selection {
-    background: var(--color-accent);
+    background: var(--color-ink);
     color: var(--color-surface);
   }
-  /* Styled, never-removed focus ring */
   :focus-visible {
-    outline: 2px solid var(--color-accent);
+    outline: 2px solid var(--color-ink);
     outline-offset: 3px;
     border-radius: var(--radius-sm);
   }
@@ -95,7 +102,9 @@
   .tnum { font-variant-numeric: tabular-nums; }
 }
 
-/* ---- Atmosphere: grain + scanlines + duotone glow (never a flat fill) ---- */
+/* ============================================================
+   Atmosphere + glitch utilities
+   ============================================================ */
 @layer utilities {
   /* Fine film grain overlay (fixed, whole page) */
   .grain::after {
@@ -104,9 +113,26 @@
     inset: 0;
     z-index: 60;
     pointer-events: none;
-    opacity: 0.05;
+    opacity: 0.06;
     mix-blend-mode: overlay;
     background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='140' height='140'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='2' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
+  }
+  /* Faint scrolling scanlines across the whole page (the CRT bed) */
+  .grain::before {
+    content: "";
+    position: fixed;
+    inset: 0;
+    z-index: 59;
+    pointer-events: none;
+    opacity: 0.5;
+    background: repeating-linear-gradient(
+      to bottom,
+      transparent 0,
+      transparent 2px,
+      color-mix(in oklab, var(--color-ink) 4%, transparent) 3px,
+      transparent 4px
+    );
+    animation: scan-drift 8s linear infinite;
   }
   /* CRT scanlines (scoped to a positioned parent) */
   .scanlines::before {
@@ -119,20 +145,23 @@
       to bottom,
       transparent 0,
       transparent 2px,
-      color-mix(in oklab, var(--color-surface) 55%, transparent) 3px,
+      color-mix(in oklab, var(--color-ink) 7%, transparent) 3px,
       transparent 4px
     );
-    mix-blend-mode: multiply;
+    mix-blend-mode: screen;
     opacity: 0.5;
   }
-  /* Duotone chromatic text — the arcade signature */
+
+  /* Chromatic text fringe — the glitch signature, static */
   .chroma {
     text-shadow:
-      0.02em 0 0 color-mix(in oklab, var(--color-accent-warm) 85%, transparent),
-      -0.02em 0 0 color-mix(in oklab, var(--color-accent) 85%, transparent);
+      0.02em 0 0 color-mix(in oklab, var(--glitch-red) 80%, transparent),
+      -0.02em 0 0 color-mix(in oklab, var(--glitch-cyan) 80%, transparent);
   }
+
   .glow-accent { box-shadow: var(--shadow-glow); }
-  /* Arcade beveled corner */
+
+  /* Brutalist bevelled corners */
   .clip-corner {
     clip-path: polygon(0 0, 100% 0, 100% calc(100% - 0.6rem), calc(100% - 0.6rem) 100%, 0 100%);
   }
@@ -140,28 +169,136 @@
     clip-path: polygon(0.7rem 0, 100% 0, 100% calc(100% - 0.7rem), calc(100% - 0.7rem) 100%, 0 100%, 0 0.7rem);
   }
   .hairline { border: 1px solid var(--color-line); }
+
+  /* Monochrome atmospheric wash — replaces the old colour mesh */
   .mesh-bg {
     background:
-      radial-gradient(60% 55% at 15% 10%, color-mix(in oklab, var(--color-accent) 22%, transparent), transparent 60%),
-      radial-gradient(55% 50% at 85% 20%, color-mix(in oklab, var(--color-accent-magenta) 20%, transparent), transparent 60%),
-      radial-gradient(70% 60% at 50% 120%, color-mix(in oklab, var(--color-accent-warm) 16%, transparent), transparent 60%),
+      radial-gradient(60% 55% at 15% 10%, color-mix(in oklab, var(--color-ink) 10%, transparent), transparent 60%),
+      radial-gradient(55% 50% at 85% 20%, color-mix(in oklab, var(--color-ink) 7%, transparent), transparent 60%),
+      radial-gradient(80% 70% at 50% 120%, color-mix(in oklab, var(--color-ink) 6%, transparent), transparent 60%),
       var(--color-surface);
   }
+  /* VHS glitch bars — faint horizontal tracking noise band */
+  .vhs-bg {
+    background-image:
+      repeating-linear-gradient(
+        0deg,
+        transparent 0,
+        transparent 6px,
+        color-mix(in oklab, var(--color-ink) 3%, transparent) 7px,
+        transparent 8px
+      );
+  }
+
+  /* Image treatment: force art to monochrome + hard contrast */
+  .mono-img { filter: grayscale(1) contrast(1.15) brightness(0.92); }
+  .mono-img-hi { filter: grayscale(1) contrast(1.35) brightness(1.05); }
+
+  /* ---- Glitch text (CSS data-text layers). Element must set
+     style={{"--txt": '"WORD"'}} or use the GlitchText component. ---- */
+  .glitch-layer {
+    position: relative;
+    display: inline-block;
+  }
+  .glitch-layer::before,
+  .glitch-layer::after {
+    content: attr(data-text);
+    position: absolute;
+    inset: 0;
+    pointer-events: none;
+    clip-path: inset(0 0 0 0);
+  }
+  .glitch-layer::before {
+    color: var(--glitch-cyan);
+    mix-blend-mode: screen;
+    animation: glitch-a 2.6s steps(2, jump-none) infinite;
+  }
+  .glitch-layer::after {
+    color: var(--glitch-red);
+    mix-blend-mode: screen;
+    animation: glitch-b 3.1s steps(2, jump-none) infinite;
+  }
+  /* glitch bursts only on hover to keep reading calm */
+  .glitch-hover:hover .glitch-layer::before { animation-duration: 0.5s; }
+  .glitch-hover:hover .glitch-layer::after { animation-duration: 0.45s; }
+
+  /* Route transition: content eases in; a single scan-tear sweeps down once */
+  .route-glitch { animation: route-in 0.55s var(--ease-out-expo) both; }
+  .route-glitch-sweep {
+    position: fixed;
+    inset: 0;
+    z-index: 55;
+    pointer-events: none;
+    background:
+      linear-gradient(to bottom,
+        transparent 0%,
+        color-mix(in oklab, var(--glitch-cyan) 10%, transparent) 48%,
+        color-mix(in oklab, var(--color-ink) 22%, transparent) 50%,
+        color-mix(in oklab, var(--glitch-red) 10%, transparent) 52%,
+        transparent 100%);
+    mix-blend-mode: screen;
+    animation: route-sweep 0.55s var(--ease-out-expo) both;
+  }
+
+  .animate-marquee { animation: marquee 32s linear infinite; }
+  .animate-float { animation: float-slow 6s var(--ease-out-expo) infinite; }
+  .animate-flicker { animation: flicker 4s linear infinite; }
+  .animate-glitch-skew { animation: glitch-skew 4s steps(10, jump-none) infinite; }
+  .animate-glitch-in { animation: glitch-in 0.6s var(--ease-out-expo) both; }
 }
 
 /* ---- Keyframes ---- */
 @keyframes float-slow { 0%,100% { transform: translateY(0); } 50% { transform: translateY(-10px); } }
 @keyframes marquee { from { transform: translateX(0); } to { transform: translateX(-50%); } }
-@keyframes flicker {
-  0%, 18%, 22%, 25%, 53%, 57%, 100% { opacity: 1; }
-  20%, 24%, 55% { opacity: 0.55; }
+@keyframes scan-drift { from { background-position: 0 0; } to { background-position: 0 100vh; } }
+@keyframes route-in {
+  0%   { opacity: 0; transform: translate3d(0, 10px, 0); filter: contrast(1.4) brightness(1.2); }
+  18%  { opacity: 1; transform: translate3d(-5px, 0, 0); }
+  36%  { transform: translate3d(4px, 0, 0); }
+  100% { opacity: 1; transform: none; filter: none; }
+}
+@keyframes route-sweep {
+  0%   { opacity: 0.9; transform: translateY(-100%) scaleY(1.4); }
+  60%  { opacity: 0.7; }
+  100% { opacity: 0; transform: translateY(120%) scaleY(1); }
 }
 
+@keyframes flicker {
+  0%, 18%, 22%, 25%, 53%, 57%, 100% { opacity: 1; }
+  20%, 24%, 55% { opacity: 0.6; }
+}
 @keyframes spin-slow { to { transform: rotate(360deg); } }
 
-.animate-marquee { animation: marquee 32s linear infinite; }
-.animate-float { animation: float-slow 6s var(--ease-out-expo) infinite; }
-.animate-flicker { animation: flicker 4s linear infinite; }
+/* RGB-split layers slide + clip to fake channel tearing */
+@keyframes glitch-a {
+  0%, 100%   { transform: translate(0); clip-path: inset(0 0 0 0); }
+  48%        { transform: translate(0); }
+  50%        { transform: translate(-2px, 1px); clip-path: inset(20% 0 40% 0); }
+  52%        { transform: translate(2px, -1px); clip-path: inset(60% 0 10% 0); }
+  54%        { transform: translate(0); clip-path: inset(0 0 0 0); }
+}
+@keyframes glitch-b {
+  0%, 100%   { transform: translate(0); clip-path: inset(0 0 0 0); }
+  38%        { transform: translate(0); }
+  40%        { transform: translate(2px, -1px); clip-path: inset(10% 0 60% 0); }
+  42%        { transform: translate(-2px, 1px); clip-path: inset(50% 0 20% 0); }
+  44%        { transform: translate(0); clip-path: inset(0 0 0 0); }
+}
+@keyframes glitch-skew {
+  0%, 100% { transform: skewX(0deg); }
+  47% { transform: skewX(0deg); }
+  48% { transform: skewX(-6deg); }
+  49% { transform: skewX(4deg); }
+  50% { transform: skewX(0deg); }
+}
+/* Route / load reveal: slice in with a quick channel tear */
+@keyframes glitch-in {
+  0%   { opacity: 0; transform: translate3d(0, 8px, 0); clip-path: inset(0 0 100% 0); filter: contrast(1.6); }
+  20%  { opacity: 1; clip-path: inset(0 0 60% 0); transform: translate3d(-4px, 0, 0); }
+  40%  { clip-path: inset(40% 0 20% 0); transform: translate3d(4px, 0, 0); }
+  60%  { clip-path: inset(10% 0 0 0); transform: translate3d(-2px, 0, 0); }
+  100% { opacity: 1; transform: none; clip-path: inset(0 0 0 0); filter: none; }
+}
 
 /* ---- Reduced motion ---- */
 @media (prefers-reduced-motion: reduce) {
@@ -172,4 +309,5 @@
     scroll-behavior: auto !important;
   }
   html { scroll-behavior: auto; }
+  .grain::before { animation: none; }
 }
