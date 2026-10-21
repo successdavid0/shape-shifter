@@ -50,7 +50,7 @@
   --text-display: clamp(2.75rem, 1.5rem + 7vw, 6.75rem);
 
   /* Space — 4px base, 8px rhythm */
-  --spacing-section: clamp(4rem, 3rem + 6vw, 9rem);
+  --spacing-section: clamp(3rem, 2.2rem + 3.6vw, 5.5rem);
 
   /* Motion */
   --ease-out-expo: cubic-bezier(0.16, 1, 0.3, 1);

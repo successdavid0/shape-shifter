@@ -4,7 +4,6 @@ import { formatMintDateShort } from "@/lib/datetime";
 import { Button } from "@/components/ui/Button";
 import { Pill } from "@/components/ui/Pill";
 import { Fill } from "@/components/ui/Fill";
-import { Wordmark } from "@/components/ui/Wordmark";
 import { LoadStagger, LoadItem, Tilt } from "@/components/ui/motion";
 
 export function Hero() {
@@ -12,7 +11,7 @@ export function Hero() {
   return (
     <section
       id="top"
-      className="mesh-bg vhs-bg scanlines relative overflow-hidden px-5 pb-16 pt-[calc(var(--header-h)+1.5rem)] sm:px-8"
+      className="mesh-bg vhs-bg scanlines relative overflow-hidden px-5 pb-10 pt-[calc(var(--header-h)+1rem)] sm:px-8"
     >
       {/* ghost creature bleeding through the back of the hero */}
       <div
@@ -38,19 +37,23 @@ export function Hero() {
           </Pill>
         </LoadItem>
 
-        {/* Full-width glitch wordmark banner */}
+        {/* Full-width glitchmark banner — the real logo art */}
         <LoadItem y={30}>
-          <h1 className="animate-glitch-skew">
-            <Wordmark text={collection.name} />
+          <h1 className="animate-flicker">
+            <span className="sr-only">{collection.name} on XRPL</span>
+            <Image
+              src="/brand/wordmark-dark.png"
+              alt=""
+              width={2170}
+              height={725}
+              priority
+              sizes="(max-width: 1280px) 100vw, 1216px"
+              className="mx-auto block h-auto w-full max-w-5xl"
+            />
           </h1>
         </LoadItem>
-        <LoadItem>
-          <p className="mt-1 text-center font-mono text-xs uppercase tracking-[0.5em] text-ink-muted sm:text-sm">
-            on XRPL
-          </p>
-        </LoadItem>
 
-        <div className="mt-8 grid items-end gap-10 lg:mt-14 lg:grid-cols-2 lg:gap-12">
+        <div className="mt-6 grid items-end gap-8 lg:mt-8 lg:grid-cols-2 lg:gap-12">
           {/* Copy — first in DOM so the mint CTA is above the fold on mobile */}
           <div className="order-1 flex flex-col items-start gap-6">
             <LoadItem>

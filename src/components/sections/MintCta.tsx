@@ -1,3 +1,4 @@
+import Image from "next/image";
 import Link from "next/link";
 import { collection, isFill, legal } from "@/lib/content";
 import { Fill } from "@/components/ui/Fill";
@@ -12,7 +13,19 @@ export function MintCta() {
       id="mint"
       className="mesh-bg scroll-mt-[var(--header-h)] scanlines relative overflow-hidden px-5 py-[var(--spacing-section)] sm:px-8"
     >
-      <Reveal className="mx-auto flex max-w-3xl flex-col items-center gap-8 text-center">
+      {/* coming-soon glitch figure — fills the band with atmosphere */}
+      <div aria-hidden="true" className="pointer-events-none absolute inset-0">
+        <Image
+          src="/brand/coming-soon.png"
+          alt=""
+          fill
+          sizes="100vw"
+          className="mono-img object-cover opacity-20"
+        />
+        <div className="absolute inset-0 bg-gradient-to-b from-surface via-surface/60 to-surface" />
+      </div>
+
+      <Reveal className="relative mx-auto flex max-w-3xl flex-col items-center gap-6 text-center">
         <h2 className="font-display text-3xl font-extrabold uppercase leading-[0.9] tracking-tight sm:text-display">
           <span className="chroma">Wear the skin</span>
         </h2>

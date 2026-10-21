@@ -17,7 +17,7 @@ export function PageHero({
   intro?: string;
 }) {
   return (
-    <section className="mesh-bg vhs-bg scanlines relative overflow-hidden border-b border-line px-5 pb-12 pt-[calc(var(--header-h)+3rem)] sm:px-8">
+    <section className="mesh-bg vhs-bg scanlines relative overflow-hidden border-b border-line px-5 pb-10 pt-[calc(var(--header-h)+2rem)] sm:px-8">
       {/* faint oversized ghost wordmark bleeding behind the title */}
       <div
         aria-hidden="true"
