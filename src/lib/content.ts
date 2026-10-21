@@ -78,73 +78,73 @@ export const art: ArtPiece[] = [
   {
     id: "79",
     src: "/art/SKINWALKER79.png",
-    rarityLabel: "LEGENDARY · WALKER SEAL",
+    rarityLabel: "LEGENDARY · SPIRIT MASTER",
     rarity: "Legendary",
-    title: "Walker Seal #79",
+    title: "Spirit Master #79",
     alt: "A split-face shaman mask, one half living blue skin and one half bare skull, wearing a bone-tooth necklace and a turquoise-and-orange tribal robe against an electric-blue field.",
   },
   {
     id: "667",
     src: "/art/SKINWALKER667.png",
-    rarityLabel: "RARE · SKIN STALKER",
+    rarityLabel: "RARE · SOUL STEALER",
     rarity: "Rare",
-    title: "Skin Stalker #667",
+    title: "Soul Stealer #667",
     alt: "A golden antlered animal skull glowing with an 'ARA' sigil on its brow, set against a dark ritual backdrop of maze patterns.",
   },
   {
     id: "261",
     src: "/art/SKINWALKER261.png",
-    rarityLabel: "RARE · SKIN STALKER",
+    rarityLabel: "RARE · SOUL STEALER",
     rarity: "Rare",
-    title: "Skin Stalker #261",
+    title: "Soul Stealer #261",
     alt: "A horned golden skull-demon with a wide fanged grin, framed by magenta and acid-green zigzag beadwork on black.",
   },
   {
     id: "386",
     src: "/art/SKINWALKER386.png",
-    rarityLabel: "RARE · SKIN STALKER",
+    rarityLabel: "RARE · SOUL STEALER",
     rarity: "Rare",
-    title: "Skin Stalker #386",
+    title: "Soul Stealer #386",
     alt: "A green werewolf with spiralling red hypnotic eyes and a broad fanged grin, wearing a blue tribal collar under a starfield.",
   },
   {
     id: "720",
     src: "/art/SKINWALKER720.png",
-    rarityLabel: "RARE · SKIN STALKER",
+    rarityLabel: "RARE · SOUL STEALER",
     rarity: "Rare",
-    title: "Skin Stalker #720",
+    title: "Soul Stealer #720",
     alt: "A blue-maned werewolf with glowing yellow eyes in a teal-and-orange patterned robe against a deep blue field.",
   },
   {
     id: "136",
     src: "/art/SKINWALKER136.png",
-    rarityLabel: "RARE · SKIN STALKER",
+    rarityLabel: "RARE · SOUL STEALER",
     rarity: "Rare",
-    title: "Skin Stalker #136",
+    title: "Soul Stealer #136",
     alt: "A golden-eyed hyena-skull shaman in a green tribal robe, standing before a burning desert sunset.",
   },
   {
     id: "206",
     src: "/art/SKINWALKER206.png",
-    rarityLabel: "RARE · SKIN STALKER",
+    rarityLabel: "RARE · SOUL STEALER",
     rarity: "Rare",
-    title: "Skin Stalker #206",
+    title: "Soul Stealer #206",
     alt: "A stitched scarecrow-skull creature with white button eyes and a fanged grin, in a green maze-pattern poncho at dusk.",
   },
   {
     id: "674",
     src: "/art/SKINWALKER674.png",
-    rarityLabel: "RARE · SKIN STALKER",
+    rarityLabel: "RARE · SOUL STEALER",
     rarity: "Rare",
-    title: "Skin Stalker #674",
+    title: "Soul Stealer #674",
     alt: "An orange bat-eared gremlin beast baring its fangs, wearing a flame-patterned collar under a swirling starfield.",
   },
   {
     id: "192",
     src: "/art/SKINWALKER192.png",
-    rarityLabel: "COMMON · TRIBE",
+    rarityLabel: "COMMON · TRICKSTER",
     rarity: "Common",
-    title: "Tribe #192",
+    title: "Trickster #192",
     alt: "A horned brown demon-bull beast with glowing orange eyes in a green patterned robe against a desert horizon.",
   },
   {
@@ -281,7 +281,7 @@ export const team = [
 export const faq = [
   {
     q: "What is SHAPESHIFTERS?",
-    a: "A collection of folk-horror totem portraits — shapeshifter spirits caught mid-transformation. Each carries a rarity: Common Trickster/Tribe, Rare Skin Stalker, or the Legendary Walker Seal.",
+    a: "A collection of folk-horror totem portraits — shapeshifter spirits caught mid-transformation. Each carries a rarity: Common Trickster, Rare Soul Stealer, or the Legendary Spirit Master.",
   },
   {
     q: "What chain is it on, and what wallet do I need?",
@@ -321,4 +321,71 @@ export const legal = {
   disclaimer:
     "SHAPESHIFTERS is an art collectible. Nothing on this page is financial advice or a promise of value, utility, or return. Digital collectibles carry risk; only spend what you can afford to lose.",
   rights: "Art © the SHAPESHIFTERS artist. Holders receive commercial rights to their owned token.",
+} as const;
+
+/* ============================================================
+   The Skinwalker Edition — collection narrative (verbatim copy)
+   ============================================================ */
+
+export const skinwalker = {
+  kicker: "The Skinwalker Edition",
+  heading: "Skinwalker Edition NFTs",
+  /** Staccato opening lines, shown one per row. */
+  lede: ["The legends were always there.", "Watching.", "Waiting.", "Changing."],
+  body: "The Skinwalker Edition introduces the first inhabitants of the Shapeshifter universe — mysterious beings inspired by one of the darkest creatures in folklore.",
+  tags: ["Three levels of power.", "One collection.", "Infinite possibilities."],
+} as const;
+
+/** The three rarity tiers, in ascending power. */
+export const tiers = [
+  {
+    level: "Common",
+    name: "Trickster",
+    punch: "Clever. Elusive. Unpredictable.",
+    body: "The Trickster doesn't need to overpower you. It just needs to fool you.",
+  },
+  {
+    level: "Rare",
+    name: "Soul Stealer",
+    punch: "Stronger. Stranger. More dangerous.",
+    body: "Something changes when the Soul Stealer arrives. And it is much harder to escape.",
+  },
+  {
+    level: "Legendary",
+    name: "Spirit Master",
+    punch: "The rarest power in the Skinwalker Edition.",
+    body: "The Spirit Master doesn't simply enter the game. It changes the game.",
+  },
+] as const;
+
+export const rarityPower = {
+  kicker: "The equation",
+  heading: "Rarity is power",
+  lines: [
+    "Not every Shapeshifter is created equal.",
+    "Common. Rare. Legendary.",
+    "Your collection can determine what you're capable of — but rarity is only part of the equation.",
+    "The more you collect, the more your power can compound.",
+    "One Legendary can be worth more than a collection of ordinary creatures.",
+    "Because in the world of Shapeshifter… power isn't always about numbers.",
+  ],
+} as const;
+
+export const game = {
+  kicker: "The game",
+  heading: "What will you become?",
+  body: [
+    "Shapeshifter isn't just something you own. It's something you play.",
+    "Your NFTs will become part of the experience — giving you access to a world built around rarity & powers, chance, strategy, and discovery.",
+  ],
+  steps: ["Collect.", "Connect your wallet.", "Enter the game.", "See what your NFTs can do."],
+  cta: "Enter the game",
+  ctaNote: "Coming soon",
+} as const;
+
+export const xrpl = {
+  kicker: "The chain",
+  heading: "Built on XRPL",
+  tagline: "Fast. Efficient. Built for digital ownership.",
+  body: "Shapeshifter NFTs live on the XRP Ledger, bringing the collection and its future experiences into one of the world's most established digital asset ecosystems.",
 } as const;

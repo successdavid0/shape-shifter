@@ -30,7 +30,7 @@ export function HeroPoster({ priority = false }: { priority?: boolean }) {
         aria-hidden="true"
       />
       <div className="absolute bottom-3 left-3 z-[3] font-mono text-[0.65rem] uppercase tracking-widest text-ink-muted/70">
-        Walker Seal · 1/1
+        Spirit Master · 1/1
       </div>
     </div>
   );

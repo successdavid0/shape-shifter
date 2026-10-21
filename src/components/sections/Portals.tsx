@@ -9,7 +9,7 @@ const portals = [
     no: "01",
     href: "/tribe",
     title: "The Tribe",
-    body: "Sixteen 1/1 totems. Inspect every skin up close and rotate the Legendary Walker Seal.",
+    body: "Sixteen 1/1 totems. Inspect every skin up close and rotate the Legendary Spirit Master.",
   },
   {
     no: "02",

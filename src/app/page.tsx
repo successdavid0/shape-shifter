@@ -3,6 +3,8 @@ import { Hero } from "@/components/sections/Hero";
 import { Stats } from "@/components/sections/Stats";
 import { Marquee } from "@/components/ui/Marquee";
 import { Portals } from "@/components/sections/Portals";
+import { EnterGame } from "@/components/sections/EnterGame";
+import { BuiltOnXrpl } from "@/components/sections/BuiltOnXrpl";
 import { MintCta } from "@/components/sections/MintCta";
 
 export const metadata: Metadata = {
@@ -14,8 +16,8 @@ const MARQUEE = [
   "Mints Oct 25, 2026",
   "1 / 1 folk-horror totems",
   "Common Trickster",
-  "Rare Skin Stalker",
-  "Legendary Walker Seal",
+  "Rare Soul Stealer",
+  "Legendary Spirit Master",
   "Full commercial rights",
   "The tribe grows inward first",
 ];
@@ -27,6 +29,8 @@ export default function Home() {
       <Stats />
       <Marquee items={MARQUEE} />
       <Portals />
+      <EnterGame />
+      <BuiltOnXrpl />
       <MintCta />
     </>
   );

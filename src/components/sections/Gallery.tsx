@@ -19,7 +19,7 @@ export function Gallery() {
             title="Sixteen skins. Every one a 1/1."
           />
           <p className="max-w-sm text-sm text-ink-muted">
-            Common Tricksters, Rare Skin Stalkers, and the Legendary Walker Seal.
+            Common Tricksters, Rare Soul Stealers, and the Legendary Spirit Master.
             Hover a totem to read its name.
           </p>
         </Reveal>

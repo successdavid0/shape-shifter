@@ -4,7 +4,7 @@ import { Pill } from "@/components/ui/Pill";
 import { Reveal } from "@/components/ui/motion";
 import { NftViewerLoader } from "@/components/three/NftViewerLoader";
 
-// The Legendary Walker Seal anchors the viewer.
+// The Legendary Spirit Master anchors the viewer.
 const featured = art.find((p) => p.id === "79")!;
 
 export function Viewer() {
@@ -23,7 +23,7 @@ export function Viewer() {
           <p className="max-w-md text-ink-muted">
             Every SHAPESHIFTER rewards a closer look — layered linework, hidden
             sigils, and the moment of transformation frozen in the mask. The
-            Legendary Walker Seal is the rarest face in the tribe.
+            Legendary Spirit Master is the rarest face in the tribe.
           </p>
           <div className="flex flex-wrap gap-2">
             <Pill tone="accent">{featured.rarityLabel}</Pill>
