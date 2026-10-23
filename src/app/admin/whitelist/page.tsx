@@ -8,6 +8,7 @@ import {
 } from "@/lib/supabase";
 import { shortenAddress } from "@/lib/contract";
 import { AdminLogin, LogoutButton } from "./AdminLogin";
+import { ExportPdfButton } from "./ExportPdfButton";
 
 /**
  * /admin/whitelist — private list of Skinwalker Edition reservations.
@@ -58,7 +59,10 @@ export default async function AdminWhitelistPage() {
             {error ? "—" : `${rows.length} wallet${rows.length === 1 ? "" : "s"} on the allowlist`}
           </p>
         </div>
-        <LogoutButton />
+        <div className="flex items-center gap-2">
+          {!error && rows.length > 0 && <ExportPdfButton rows={rows} />}
+          <LogoutButton />
+        </div>
       </header>
 
       {error ? (

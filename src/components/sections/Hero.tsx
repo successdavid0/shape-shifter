@@ -3,7 +3,6 @@ import { collection, isFill } from "@/lib/content";
 import { formatMintDateShort } from "@/lib/datetime";
 import { Button } from "@/components/ui/Button";
 import { Pill } from "@/components/ui/Pill";
-import { Fill } from "@/components/ui/Fill";
 import { LoadStagger, LoadItem, Tilt } from "@/components/ui/motion";
 
 export function Hero() {
@@ -61,32 +60,8 @@ export function Hero() {
             </LoadItem>
 
             <LoadItem>
-              <dl className="flex flex-wrap gap-x-8 gap-y-3 font-mono text-sm">
-                <div className="flex flex-col">
-                  <dt className="text-xs uppercase tracking-widest text-ink-muted">Supply</dt>
-                  <dd className="tnum text-ink"><Fill value={collection.supply} /></dd>
-                </div>
-                <div className="flex flex-col">
-                  <dt className="text-xs uppercase tracking-widest text-ink-muted">Chain</dt>
-                  <dd className="text-ink"><Fill value={collection.chain} /></dd>
-                </div>
-                <div className="flex flex-col">
-                  <dt className="text-xs uppercase tracking-widest text-ink-muted">Price</dt>
-                  <dd className="tnum text-ink"><Fill value={collection.mintPrice} /></dd>
-                </div>
-                {dateKnown && (
-                  <div className="flex flex-col">
-                    <dt className="text-xs uppercase tracking-widest text-ink-muted">Mint</dt>
-                    <dd className="text-ink">{formatMintDateShort(collection.mintDateUtc)}</dd>
-                  </div>
-                )}
-              </dl>
-            </LoadItem>
-
-            <LoadItem>
               <div className="flex flex-col gap-3 pt-2 sm:flex-row">
                 <Button href="/whitelist" size="lg">Reserve your spot</Button>
-                <Button href="/tribe" size="lg" variant="outline">Meet the tribe</Button>
               </div>
             </LoadItem>
           </div>

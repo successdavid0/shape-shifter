@@ -222,10 +222,12 @@
   .glitch-hover:hover .glitch-layer::before { animation-duration: 0.5s; }
   .glitch-hover:hover .glitch-layer::after { animation-duration: 0.45s; }
 
-  /* Route transition: content eases in; a single scan-tear sweeps down once */
-  .route-glitch { animation: route-in 0.55s var(--ease-out-expo) both; }
+  /* Route transition: content eases in; a single scan-tear sweeps down once.
+     `overflow: clip` contains the absolutely-positioned sweep so its resting
+     (translated-off) state can never add scrollable height to the page. */
+  .route-glitch { position: relative; overflow: clip; animation: route-in 0.55s var(--ease-out-expo) both; }
   .route-glitch-sweep {
-    position: fixed;
+    position: absolute;
     inset: 0;
     z-index: 55;
     pointer-events: none;

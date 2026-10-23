@@ -1,7 +1,6 @@
 import type { Metadata } from "next";
 import { PageHero } from "@/components/layout/PageHero";
 import { Whitelist } from "@/components/sections/Whitelist";
-import { MintCta } from "@/components/sections/MintCta";
 
 export const metadata: Metadata = {
   title: "Whitelist",
@@ -20,7 +19,6 @@ export default function WhitelistPage() {
         intro="Drop your wallet to lock a guaranteed allowlist spot before the public walk. No cost, no connection — just your place in the tribe."
       />
       <Whitelist />
-      <MintCta />
     </>
   );
 }

@@ -1,11 +1,8 @@
 import type { Metadata } from "next";
 import { Hero } from "@/components/sections/Hero";
-import { Stats } from "@/components/sections/Stats";
 import { Marquee } from "@/components/ui/Marquee";
-import { Portals } from "@/components/sections/Portals";
 import { EnterGame } from "@/components/sections/EnterGame";
 import { BuiltOnXrpl } from "@/components/sections/BuiltOnXrpl";
-import { MintCta } from "@/components/sections/MintCta";
 
 export const metadata: Metadata = {
   alternates: { canonical: "/" },
@@ -26,12 +23,9 @@ export default function Home() {
   return (
     <>
       <Hero />
-      <Stats />
       <Marquee items={MARQUEE} />
-      <Portals />
       <EnterGame />
       <BuiltOnXrpl />
-      <MintCta />
     </>
   );
 }

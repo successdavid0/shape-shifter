@@ -1,5 +1,5 @@
 /**
- * SHAPESHIFTERS — single source of truth for all copy + collection data.
+ * SHAPESHIFTER — single source of truth for all copy + collection data.
  * PRD A4: no hardcoded strings in components.
  *
  * FILL sentinel — hard, verifiable facts the owner must supply (supply,
@@ -22,7 +22,7 @@ export interface ArtPiece {
 }
 
 export const collection = {
-  name: "SHAPESHIFTERS",
+  name: "SHAPESHIFTER",
   edition: "Skinwalker Edition", // the drop now live on this page
   ticker: FILL, // e.g. "SHIFT"
   // Thematic pitch derived from the artwork (editable):
@@ -280,12 +280,12 @@ export const team = [
 
 export const faq = [
   {
-    q: "What is SHAPESHIFTERS?",
+    q: "What is SHAPESHIFTER?",
     a: "A collection of folk-horror totem portraits — shapeshifter spirits caught mid-transformation. Each carries a rarity: Common Trickster, Rare Soul Stealer, or the Legendary Spirit Master.",
   },
   {
     q: "What chain is it on, and what wallet do I need?",
-    a: `SHAPESHIFTERS mints on ${collection.chain === FILL ? "a chain the team will confirm before mint" : collection.chain}. You'll need a standard self-custody wallet (e.g. MetaMask or Rainbow) with funds for the mint plus a little for network gas.`,
+    a: `SHAPESHIFTER mints on ${collection.chain === FILL ? "a chain the team will confirm before mint" : collection.chain}. You'll need a standard self-custody wallet (e.g. MetaMask or Rainbow) with funds for the mint plus a little for network gas.`,
   },
   {
     q: "When does the Skinwalker Edition mint?",
@@ -309,7 +309,7 @@ export const faq = [
   },
   {
     q: "Are returns or floor price guaranteed?",
-    a: "No. Nothing here is financial advice and no return is promised. Collect SHAPESHIFTERS because you want the art and the tribe — never as an investment expecting profit.",
+    a: "No. Nothing here is financial advice and no return is promised. Collect SHAPESHIFTER because you want the art and the tribe — never as an investment expecting profit.",
   },
   {
     q: "Where can I verify the contract?",
@@ -319,8 +319,8 @@ export const faq = [
 
 export const legal = {
   disclaimer:
-    "SHAPESHIFTERS is an art collectible. Nothing on this page is financial advice or a promise of value, utility, or return. Digital collectibles carry risk; only spend what you can afford to lose.",
-  rights: "Art © the SHAPESHIFTERS artist. Holders receive commercial rights to their owned token.",
+    "SHAPESHIFTER is an art collectible. Nothing on this page is financial advice or a promise of value, utility, or return. Digital collectibles carry risk; only spend what you can afford to lose.",
+  rights: "Art © the SHAPESHIFTER artist. Holders receive commercial rights to their owned token.",
 } as const;
 
 /* ============================================================

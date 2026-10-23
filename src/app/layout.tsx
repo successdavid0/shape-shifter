@@ -78,7 +78,7 @@ export default function RootLayout({
           <style>{`.js-reveal{opacity:1 !important;transform:none !important}`}</style>
         </noscript>
       </head>
-      <body className="grain min-h-full">
+      <body className="grain flex min-h-dvh flex-col">
         <JsonLd />
         <a
           href="#main"
@@ -88,7 +88,7 @@ export default function RootLayout({
         </a>
         <MintProvider>
           <Header />
-          <main id="main">{children}</main>
+          <main id="main" className="flex-1">{children}</main>
           <Footer />
         </MintProvider>
       </body>
