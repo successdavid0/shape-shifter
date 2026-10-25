@@ -67,9 +67,10 @@ export const whitelist = {
   loading: "Reserving…",
   success: "You're on the list. We'll call your wallet when the Skinwalker Edition walks.",
   duplicate: "This wallet is already on the list — your spot is locked.",
+  deviceLimit:
+    "You've already reserved a spot from this device. Only one wallet can be reserved per device.",
   invalid: "Enter a valid wallet address (0x… , 42 chars) or an ENS name ending in .eth.",
   error: "Couldn't reserve your spot just now. Please try again in a moment.",
-  again: "Reserve another wallet",
   note: "No tokens move and nothing is charged. Reserving only records your wallet for the allowlist snapshot — verify you're on the official domain first.",
 } as const;
 

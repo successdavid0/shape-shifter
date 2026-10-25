@@ -25,7 +25,14 @@ const STORE_KEY = "skinwalker:whitelist";
 const ADDRESS_RE = /^0x[a-fA-F0-9]{40}$/;
 const ENS_RE = /^[a-z0-9-]+(\.[a-z0-9-]+)*\.eth$/i;
 
-type Status = "idle" | "submitting" | "success" | "duplicate" | "invalid" | "error";
+type Status =
+  | "idle"
+  | "submitting"
+  | "success"
+  | "duplicate"
+  | "deviceLimit"
+  | "invalid"
+  | "error";
 
 function normalize(raw: string): string {
   return raw.trim().toLowerCase();
@@ -52,7 +59,7 @@ export function WhitelistForm() {
   const [saved, setSaved] = useState<string>("");
   const inputRef = useRef<HTMLInputElement>(null);
 
-  // Re-focus the field when returning to the form after a success.
+  // Focus the field on mount and whenever we return to the editable state.
   useEffect(() => {
     if (status === "idle") inputRef.current?.focus();
   }, [status]);
@@ -72,6 +79,13 @@ export function WhitelistForm() {
       setStatus("duplicate");
       return;
     }
+    // One reservation per device. A wallet already saved here (and the new one
+    // differs) means this device has used its spot — block before the request.
+    // The server enforces the same rule via a signed cookie (defence in depth).
+    if (existing.length > 0) {
+      setStatus("deviceLimit");
+      return;
+    }
 
     setStatus("submitting");
     try {
@@ -80,6 +94,12 @@ export function WhitelistForm() {
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({ address: entry }),
       });
+
+      // 409 = this device already reserved a different wallet (server guard).
+      if (res.status === 409) {
+        setStatus("deviceLimit");
+        return;
+      }
 
       // 503 = backend not configured yet → fall back to localStorage-only.
       // Any other non-2xx is a real failure.
@@ -103,34 +123,28 @@ export function WhitelistForm() {
     }
   }
 
-  function reset() {
-    setValue("");
-    setSaved("");
-    setStatus("idle");
-  }
-
-  const done = status === "success" || status === "duplicate";
+  const done =
+    status === "success" || status === "duplicate" || status === "deviceLimit";
   const display = ADDRESS_RE.test(saved) ? shortenAddress(saved) : saved;
 
   if (done) {
+    const isSuccess = status === "success";
+    const isLimit = status === "deviceLimit";
     return (
       <div
         className="flex w-full max-w-md flex-col items-center gap-4 rounded-xl border border-line-strong bg-surface-2/70 p-6 text-center"
         role="status"
         aria-live="polite"
       >
-        <Pill tone={status === "success" ? "live" : "accent"}>
-          {status === "success" ? "Spot reserved ✓" : "Already reserved"}
+        <Pill tone={isSuccess ? "live" : "accent"}>
+          {isSuccess ? "Spot reserved ✓" : isLimit ? "One per device" : "Already reserved"}
         </Pill>
         <p className="text-ink-muted">
-          {status === "success" ? whitelist.success : whitelist.duplicate}
+          {isSuccess ? whitelist.success : isLimit ? whitelist.deviceLimit : whitelist.duplicate}
         </p>
-        {display && (
+        {display && !isLimit && (
           <code className="break-all font-mono text-sm text-ink">{display}</code>
         )}
-        <Button size="sm" variant="ghost" onClick={reset}>
-          {whitelist.again}
-        </Button>
       </div>
     );
   }
