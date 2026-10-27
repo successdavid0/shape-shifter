@@ -4,6 +4,7 @@ import { Button } from "@/components/ui/Button";
 import { Pill } from "@/components/ui/Pill";
 import { Countdown } from "./Countdown";
 import { explorerUrl, shortenAddress } from "@/lib/contract";
+import { collection } from "@/lib/content";
 
 export type MintViewKind =
   | "disconnected"
@@ -116,7 +117,7 @@ export function MintView(p: MintViewProps) {
           <p className="text-ink-muted">
             You&apos;ve minted the maximum per wallet. Thank you for joining the tribe.
           </p>
-          <Button size="lg" variant="outline" className="w-full" href="/tribe">See the collection</Button>
+          <Button size="lg" variant="outline" className="w-full" href="#about">See the collection</Button>
         </Frame>
       );
 
@@ -125,7 +126,7 @@ export function MintView(p: MintViewProps) {
         <Frame>
           <Pill tone="soon">Sold out</Pill>
           <p className="text-ink-muted">Every Shapeshifter has walked. Find one on the secondary market.</p>
-          <Button size="lg" variant="outline" className="w-full" href="/whitelist">View on marketplace</Button>
+          <Button size="lg" variant="outline" className="w-full" href={collection.xrpCafeUrl}>View on XRP Cafe</Button>
         </Frame>
       );
 

@@ -61,22 +61,16 @@ export function Footer() {
                   <span className="text-ink-muted">Contract</span>
                   <Fill value={collection.contractAddress} className="break-all font-mono text-xs" />
                 </li>
-                <li>
-                  {isFill(collection.marketplaceUrl) ? (
-                    <span>
-                      <span className="text-ink-muted">Marketplace</span>{" "}
-                      <Fill value={collection.marketplaceUrl} />
-                    </span>
-                  ) : (
-                    <a
-                      href={collection.marketplaceUrl}
-                      target="_blank"
-                      rel="noopener noreferrer"
-                      className="text-ink transition-colors hover:text-ink-muted"
-                    >
-                      Marketplace
-                    </a>
-                  )}
+                <li className="flex flex-col gap-1">
+                  <span className="text-ink-muted">Marketplace</span>
+                  <a
+                    href={collection.xrpCafeUrl}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="text-ink transition-colors hover:text-ink-muted"
+                  >
+                    XRP Cafe
+                  </a>
                 </li>
               </ul>
             </div>
@@ -87,23 +81,18 @@ export function Footer() {
               </h3>
               <ul className="mt-4 space-y-2 text-sm">
                 <li>
-                  <Link href="/tribe" className="text-ink transition-colors hover:text-ink-muted">
-                    The Tribe
+                  <Link href="#about" className="text-ink transition-colors hover:text-ink-muted">
+                    The NFTs
                   </Link>
                 </li>
                 <li>
-                  <Link href="/whitelist" className="text-ink transition-colors hover:text-ink-muted">
+                  <Link href="#whitelist" className="text-ink transition-colors hover:text-ink-muted">
                     Whitelist
                   </Link>
                 </li>
                 <li>
-                  <Link href="/lore" className="text-ink transition-colors hover:text-ink-muted">
-                    Lore
-                  </Link>
-                </li>
-                <li>
-                  <Link href="/faq" className="text-ink transition-colors hover:text-ink-muted">
-                    FAQ
+                  <Link href="#xrpl" className="text-ink transition-colors hover:text-ink-muted">
+                    Built on XRPL
                   </Link>
                 </li>
               </ul>

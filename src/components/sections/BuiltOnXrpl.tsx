@@ -4,7 +4,10 @@ import { Reveal } from "@/components/ui/motion";
 
 export function BuiltOnXrpl() {
   return (
-    <section className="border-t border-line bg-surface-2/40 px-5 py-[var(--spacing-section)] sm:px-8">
+    <section
+      id="xrpl"
+      className="scroll-mt-[var(--header-h)] border-t border-line bg-surface-2/40 px-5 py-[var(--spacing-section)] sm:px-8"
+    >
       <Reveal className="mx-auto flex max-w-[80rem] flex-col gap-6 md:flex-row md:items-center md:justify-between">
         <div className="flex flex-col gap-3">
           <p className="font-mono text-xs uppercase tracking-[0.3em] text-ink-muted">

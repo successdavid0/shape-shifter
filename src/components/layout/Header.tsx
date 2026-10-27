@@ -89,7 +89,7 @@ export function Header() {
         </nav>
 
         <div className="hidden md:block">
-          <Button href="/whitelist" size="sm">Reserve spot</Button>
+          <Button href="#whitelist" size="sm">Reserve spot</Button>
         </div>
 
         <button
@@ -147,7 +147,7 @@ export function Header() {
             );
           })}
           <div className="mt-6 w-full max-w-xs" onClick={() => setOpen(false)}>
-            <Button href="/whitelist" size="lg" className="w-full">Reserve spot</Button>
+            <Button href="#whitelist" size="lg" className="w-full">Reserve spot</Button>
           </div>
         </div>
       </div>

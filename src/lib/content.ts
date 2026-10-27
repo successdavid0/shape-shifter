@@ -38,6 +38,9 @@ export const collection = {
   mintDateUtc: "2026-10-25T17:00:00Z", // ISO-8601 UTC
   contractAddress: FILL, // or "TBA"
   marketplaceUrl: FILL,
+  // XRP Cafe — the XRPL marketplace where the collection lives / will list.
+  // Update to the exact collection URL once minted (e.g. https://xrp.cafe/collection/<slug>).
+  xrpCafeUrl: "https://xrp.cafe",
   socials: {
     x: FILL,
     discord: FILL,
@@ -46,11 +49,11 @@ export const collection = {
   explorerBase: FILL, // e.g. https://basescan.org/address/
 } as const;
 
+// Single-page site — nav items are in-page anchors, not separate routes.
 export const nav = [
-  { label: "The Tribe", href: "/tribe" },
-  { label: "Whitelist", href: "/whitelist" },
-  { label: "Lore", href: "/lore" },
-  { label: "FAQ", href: "/faq" },
+  { label: "The NFTs", href: "#about" },
+  { label: "Whitelist", href: "#whitelist" },
+  { label: "Built on XRPL", href: "#xrpl" },
 ] as const;
 
 /**

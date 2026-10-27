@@ -1,30 +1,26 @@
 import type { Metadata } from "next";
 import { Hero } from "@/components/sections/Hero";
-import { Marquee } from "@/components/ui/Marquee";
-import { EnterGame } from "@/components/sections/EnterGame";
+import { AboutNfts } from "@/components/sections/AboutNfts";
+import { Whitelist } from "@/components/sections/Whitelist";
 import { BuiltOnXrpl } from "@/components/sections/BuiltOnXrpl";
 
 export const metadata: Metadata = {
   alternates: { canonical: "/" },
 };
 
-const MARQUEE = [
-  "Skinwalker Edition",
-  "Mints Oct 25, 2026",
-  "1 / 1 folk-horror totems",
-  "Common Trickster",
-  "Rare Soul Stealer",
-  "Legendary Spirit Master",
-  "Full commercial rights",
-  "The tribe grows inward first",
-];
-
+/**
+ * One page, four sections (no sub-routes):
+ *   1. Brand        — <Hero />
+ *   2. The NFTs     — <AboutNfts /> (collection + link to XRP Cafe)
+ *   3. Whitelist    — <Whitelist /> (reserve with your wallet)
+ *   4. Built on XRPL — <BuiltOnXrpl />
+ */
 export default function Home() {
   return (
     <>
       <Hero />
-      <Marquee items={MARQUEE} />
-      <EnterGame />
+      <AboutNfts />
+      <Whitelist />
       <BuiltOnXrpl />
     </>
   );

@@ -61,7 +61,7 @@ export function Hero() {
 
             <LoadItem>
               <div className="flex flex-col gap-3 pt-2 sm:flex-row">
-                <Button href="/whitelist" size="lg">Reserve your spot</Button>
+                <Button href="#whitelist" size="lg">Reserve your spot</Button>
               </div>
             </LoadItem>
           </div>

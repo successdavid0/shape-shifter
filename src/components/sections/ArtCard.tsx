@@ -1,11 +1,5 @@
 import Image from "next/image";
-import type { ArtPiece, Rarity } from "@/lib/content";
-
-const rarityTone: Record<Rarity, string> = {
-  Common: "text-ink-muted border-line-strong",
-  Rare: "text-ink border-line-strong",
-  Legendary: "text-ink border-ink/70",
-};
+import type { ArtPiece } from "@/lib/content";
 
 // 1x1 near-black blur while the real image streams in.
 const BLUR =
@@ -48,12 +42,6 @@ export function ArtCard({
           aria-hidden="true"
           className="scanlines pointer-events-none absolute inset-0 opacity-70 transition-opacity duration-[var(--dur-base)] group-hover:opacity-0"
         />
-        {/* rarity badge */}
-        <span
-          className={`absolute left-2 top-2 border bg-surface/80 px-2 py-1 font-mono text-[0.6rem] uppercase tracking-widest backdrop-blur-sm ${rarityTone[piece.rarity]}`}
-        >
-          {piece.rarityLabel}
-        </span>
       </div>
       {/* title slides up on hover/focus */}
       <figcaption className="pointer-events-none absolute inset-x-0 bottom-0 translate-y-full bg-gradient-to-t from-surface via-surface/90 to-transparent p-3 pt-8 transition-transform duration-[var(--dur-base)] ease-[var(--ease-out-expo)] group-hover:translate-y-0">
