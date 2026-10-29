@@ -1,4 +1,4 @@
-import { art, skinwalker, collection } from "@/lib/content";
+import { art, skinwalker, nftsLede, collection } from "@/lib/content";
 import { SectionHeading } from "@/components/ui/SectionHeading";
 import { Button } from "@/components/ui/Button";
 import { Reveal } from "@/components/ui/motion";
@@ -22,7 +22,7 @@ export function AboutNfts() {
       <div className="mx-auto max-w-[80rem]">
         <Reveal className="flex flex-col gap-6 sm:flex-row sm:items-end sm:justify-between">
           <SectionHeading index="01" kicker={skinwalker.kicker} title="The NFTs" />
-          <p className="max-w-sm text-sm text-ink-muted">{skinwalker.body}</p>
+          <p className="max-w-sm text-sm text-ink-muted">{nftsLede}</p>
         </Reveal>
 
         {/* Every skin — sixteen 1/1s. */}

@@ -19,14 +19,12 @@ export function Whitelist() {
           <span className="chroma">{whitelist.heading}</span>
         </h2>
 
-        {dateKnown && (
-          <div className="flex flex-col items-center gap-3">
-            <p className="font-mono text-xs uppercase tracking-widest text-ink-muted">
-              Mints {formatMintDate(collection.mintDateUtc)}
-            </p>
-            <Countdown iso={collection.mintDateUtc} />
-          </div>
-        )}
+        <div className="flex flex-col items-center gap-3">
+          <p className="font-mono text-xs uppercase tracking-widest text-ink-muted">
+            Mints {dateKnown ? formatMintDate(collection.mintDateUtc) : "TBA"}
+          </p>
+          {dateKnown && <Countdown iso={collection.mintDateUtc} />}
+        </div>
 
         <p className="max-w-md text-lg text-ink-muted">{whitelist.intro}</p>
 

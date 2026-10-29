@@ -3,7 +3,7 @@ import { SITE_URL } from "@/lib/site";
 
 /** Organization + WebSite structured data (PRD §10). */
 export function JsonLd() {
-  const sameAs = [collection.socials.x, collection.socials.discord, collection.socials.telegram].filter(
+  const sameAs = [collection.socials.x, collection.socials.telegram].filter(
     (u) => !isFill(u)
   );
 

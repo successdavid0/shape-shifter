@@ -4,7 +4,6 @@ import { Fill } from "@/components/ui/Fill";
 
 const socialLinks = [
   { key: "x", label: "X / Twitter", href: collection.socials.x },
-  { key: "discord", label: "Discord", href: collection.socials.discord },
   { key: "telegram", label: "Telegram", href: collection.socials.telegram },
 ] as const;
 

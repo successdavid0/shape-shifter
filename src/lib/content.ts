@@ -25,29 +25,40 @@ export const collection = {
   name: "SHAPESHIFTER",
   edition: "Skinwalker Edition", // the drop now live on this page
   ticker: FILL, // e.g. "SHIFT"
-  // Thematic pitch derived from the artwork (editable):
+  // Thematic pitch — also used as the site's SEO description.
   pitch:
-    "Shapeshifter spirits caught mid-transformation. The Skinwalker Edition — 1/1 folk-horror totems that wear other skins.",
-  tagline: "The tribe that wears other skins.",
+    "Nothing is what it seems. An evolving universe of collectible NFTs, mysterious creatures, and unique abilities — built on the XRP Ledger.",
+  tagline: "Nothing is what it seems.",
   supply: FILL, // e.g. "6,666"
   chain: FILL, // Ethereum | Base | Solana | Abstract | other
   mintPrice: FILL, // public
   mintPriceAllowlist: FILL, // allowlist, if different
-  // Official Skinwalker Edition release — Oct 25, 2026. Time (17:00 UTC) is a
-  // placeholder default; adjust the hour here if the team sets a different one.
-  mintDateUtc: "2026-10-25T17:00:00Z", // ISO-8601 UTC
+  // Skinwalker Edition release date is not yet announced — renders as "TBA"
+  // and keeps the countdown hidden. Set to an ISO-8601 UTC string to go live.
+  mintDateUtc: FILL, // e.g. "2026-11-11T17:00:00Z"
   contractAddress: FILL, // or "TBA"
   marketplaceUrl: FILL,
   // XRP Cafe — the XRPL marketplace where the collection lives / will list.
   // Update to the exact collection URL once minted (e.g. https://xrp.cafe/collection/<slug>).
   xrpCafeUrl: "https://xrp.cafe",
   socials: {
-    x: FILL,
-    discord: FILL,
-    telegram: FILL,
+    x: "https://x.com/SHAPESHIFTER_X",
+    telegram: "https://t.me/+QygzsPUBi_ZiOTQ0",
   },
   explorerBase: FILL, // e.g. https://basescan.org/address/
 } as const;
+
+/** Section 1 — the brand hero copy. */
+export const brand = {
+  tagline: "Nothing is what it seems.",
+  punch: "Collect. Transform. Enter the unknown.",
+  intro:
+    "Shapeshifter is a world of artwork, lore, and uncovering deep mysteries — built on the XRP Ledger.",
+} as const;
+
+/** Lede that opens the NFTs section. */
+export const nftsLede =
+  "There are things in this world that shouldn't exist. Things that hide in the shadows. Things that change. Shapeshifter is an evolving universe of collectible NFTs, mysterious creatures, and unique abilities.";
 
 // Single-page site — nav items are in-page anchors, not separate routes.
 export const nav = [
@@ -252,7 +263,7 @@ export const roadmap = [
   {
     phase: "I",
     title: "The Summoning",
-    body: "The Skinwalker Edition mints October 25, 2026 — the full collection walks. Allowlist wallets go first; holder verification and the Den open the same day.",
+    body: "The Skinwalker Edition mints TBA — the full collection walks. Allowlist wallets go first; holder verification and the Den open the same day.",
     status: "next" as const,
   },
   {
@@ -293,7 +304,7 @@ export const faq = [
   },
   {
     q: "When does the Skinwalker Edition mint?",
-    a: `The Skinwalker Edition mints on October 25, 2026. The live countdown on this page is the source of truth; the exact mint price goes live in the stats bar before mint. Nothing here is a promise of value.`,
+    a: `The Skinwalker Edition mint date is TBA — to be announced. When set, the live countdown on this page becomes the source of truth; the exact mint price goes live in the stats bar before mint. Nothing here is a promise of value.`,
   },
   {
     q: "How do I reserve a whitelist spot?",
@@ -376,11 +387,11 @@ export const rarityPower = {
 } as const;
 
 export const game = {
-  kicker: "The game",
-  heading: "What will you become?",
+  kicker: "Beyond the collection",
+  heading: "The game brings them to life",
   body: [
-    "Shapeshifter isn't just something you own. It's something you play.",
-    "Your NFTs will become part of the experience — giving you access to a world built around rarity & powers, chance, strategy, and discovery.",
+    "Shapeshifter was never meant to be something you simply look at. The NFTs are the beginning.",
+    "The game brings them to life. Your collection becomes your arsenal. Your rarity becomes your advantage. Your choice.",
   ],
   steps: ["Collect.", "Connect your wallet.", "Enter the game.", "See what your NFTs can do."],
   cta: "Enter the game",

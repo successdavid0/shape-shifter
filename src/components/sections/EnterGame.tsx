@@ -5,7 +5,10 @@ import { Reveal } from "@/components/ui/motion";
 
 export function EnterGame() {
   return (
-    <section className="mesh-bg scanlines relative overflow-hidden border-t border-line px-5 py-[var(--spacing-section)] sm:px-8">
+    <section
+      id="game"
+      className="mesh-bg scanlines scroll-mt-[var(--header-h)] relative overflow-hidden border-t border-line px-5 py-[var(--spacing-section)] sm:px-8"
+    >
       {/* coming-soon glitch figure, faint, behind the CTA */}
       <div aria-hidden="true" className="pointer-events-none absolute inset-0">
         <Image

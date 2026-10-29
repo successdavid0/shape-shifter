@@ -1,7 +1,6 @@
 import Image from "next/image";
-import { collection, isFill } from "@/lib/content";
+import { brand, collection, isFill } from "@/lib/content";
 import { formatMintDateShort } from "@/lib/datetime";
-import { Button } from "@/components/ui/Button";
 import { Pill } from "@/components/ui/Pill";
 import { LoadStagger, LoadItem, Tilt } from "@/components/ui/motion";
 
@@ -32,7 +31,7 @@ export function Hero() {
           <Pill tone={dateKnown ? "live" : "soon"} pulse className="mb-6">
             {dateKnown
               ? `${collection.edition} · Mints ${formatMintDateShort(collection.mintDateUtc)}`
-              : `${collection.edition} · Mint date incoming`}
+              : `${collection.edition} · Mints TBA`}
           </Pill>
         </LoadItem>
 
@@ -53,16 +52,22 @@ export function Hero() {
         </LoadItem>
 
         <div className="mt-6 grid items-end gap-8 lg:mt-8 lg:grid-cols-2 lg:gap-12">
-          {/* Copy — first in DOM so the mint CTA is above the fold on mobile */}
-          <div className="order-1 flex flex-col items-start gap-6">
+          {/* Copy — the brand statement */}
+          <div className="order-1 flex flex-col items-start gap-5">
             <LoadItem>
-              <p className="max-w-md text-lg text-ink-muted">{collection.pitch}</p>
+              <p className="font-display text-2xl font-extrabold uppercase leading-[0.95] tracking-tight text-ink sm:text-3xl">
+                {brand.tagline}
+              </p>
             </LoadItem>
 
             <LoadItem>
-              <div className="flex flex-col gap-3 pt-2 sm:flex-row">
-                <Button href="#whitelist" size="lg">Reserve your spot</Button>
-              </div>
+              <p className="font-mono text-xs uppercase tracking-[0.3em] text-accent">
+                {brand.punch}
+              </p>
+            </LoadItem>
+
+            <LoadItem>
+              <p className="max-w-md text-lg text-ink-muted">{brand.intro}</p>
             </LoadItem>
           </div>
 
